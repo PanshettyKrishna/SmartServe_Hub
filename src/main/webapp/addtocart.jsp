@@ -64,7 +64,7 @@
     String mobile = request.getParameter("mobile");
     String datetime = request.getParameter("datetime");
     String payment = request.getParameter("gender");
-    String pagetitle = request.getParameter("pagetitle");
+    String servicetitle = request.getParameter("pagetitle");
     String expertise = request.getParameter("expertise");
     String aemail=null;
     String serviceId="";
@@ -95,7 +95,7 @@
         statement.setString(4, mobile);
         statement.setString(5, datetime);
         statement.setString(6, payment);
-        statement.setString(7, pagetitle);
+        statement.setString(7, servicetitle);
         statement.setString(8, expertise);
         statement.setString(9,serviceId);
 

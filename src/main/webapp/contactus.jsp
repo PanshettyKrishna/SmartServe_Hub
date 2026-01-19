@@ -25,7 +25,7 @@
                 conn = DriverManager.getConnection(jdbcURL, dbUser, dbPassword);
 
                 String sql = "INSERT INTO contactus  VALUES (?, ?, ?, ?)";
-                System.out.println("Inseterd");
+                System.out.println("Insertd");
                 pstmt = conn.prepareStatement(sql);
                 pstmt.setString(1, name);
                 pstmt.setString(2, email);

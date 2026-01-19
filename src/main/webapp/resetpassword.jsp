@@ -30,7 +30,7 @@
 
             if (rs.next()) {
                 emailExists = true;
-                String sql = "UPDATE signup SET password=? WHERE email=?";
+                String sql = "UPDATE signup SET pwd=? WHERE email=?";
                 PreparedStatement ps1 = con.prepareStatement(sql);
                 ps1.setString(1, password);
                 ps1.setString(2, email);

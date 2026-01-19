@@ -21,9 +21,9 @@
             Map<String, Object> item = new HashMap<>();
             item.put("service_id", resultSet.getString("serviceId"));
             item.put("service_title", resultSet.getString("serviceTitle"));
-            item.put("service_details", resultSet.getString("serviceDetail"));
+            item.put("service_details", resultSet.getString("expertise"));
             item.put("service_date", resultSet.getDate("datetime"));
-            item.put("payment_option", resultSet.getString("paymentOption"));
+            item.put("payment_option", resultSet.getString("payment"));
             cartItems.add(item);
         }
 

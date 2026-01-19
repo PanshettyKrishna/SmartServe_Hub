@@ -7,7 +7,11 @@
 String reviewText = request.getParameter("reviewText");
 String reviewerName = request.getParameter("reviewerName");
 String reviewerRating = request.getParameter("reviewRating");
-int rating=Integer.parseInt(reviewerRating);
+/*int rating=Integer.parseInt(reviewerRating);*/
+int rating = 0;
+if (reviewerRating != null && !reviewerRating.trim().isEmpty()) {
+    rating = Integer.parseInt(reviewerRating);
+}
 Connection con = null;
 PreparedStatement ps = null;
 

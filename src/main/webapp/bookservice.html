@@ -488,6 +488,12 @@
 
         function selectOnGoogleMaps() {
             window.open("https://maps.google.com", "_blank");
+            
+            // Assume user selects location manually
+            document.getElementById("locationStatus").textContent = "Location selected from Google Maps";
+            document.getElementById("addLocationBtn").textContent = "Location Added";
+            document.getElementById("addLocationBtn").disabled = true;
+            document.getElementById("locationStatusField").value = "true";
             closeModal();
         }
         const form = document.getElementById('serviceForm');

@@ -24,7 +24,7 @@
    try {
        Class.forName("com.mysql.cj.jdbc.Driver");
        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/smart_service?user=root&password=root");
-       String qry = "select * from signup where email=? and password=?";
+       String qry = "select * from signup where email=? and pwd=?";
        PreparedStatement ps = con.prepareStatement(qry);
        ps.setString(1, email);
        ps.setString(2, pwd);
