@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="icon" href="./project_images/favicon2.ico" type="image/x-icon">
+    <link rel="icon" href="./project_images/favicon2.png" type="image/png">
+    <link rel="shortcut icon" href="./project_images/favicon2.ico" type="image/x-icon">
+    <title>Smart Service</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #ffffff;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            background-image: url('./project_images/blue bg.jpg');
+            background-size: cover; 
+            
+        }
+
+        .faq-container {
+            max-width: 1200px;
+            margin: 0 auto;
+           
+        }
+
+        .faq-header {
+            text-align: center;
+            font-size: 36px;
+            font-weight: bold;
+            color: #000;
+            margin-top: 50px;
+            margin-bottom: 40px;
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .content {
+            display: flex;
+        }
+
+        .table-of-content {
+            flex: 30%;
+            padding-right: 40px;
+            margin-top: -50px;
+        }
+
+        .table-of-content h2 {
+            font-size: 24px;
+            font-weight: bold;
+            color: #000;
+            margin-bottom: 20px;
+        }
+
+        .table-of-content ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .table-of-content ul li {
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        .table-of-content ul li a {
+            color: rgb(100, 97, 97); /* Initial color set to grey */
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease; /* Smooth color transition */
+        }
+
+        .table-of-content ul li a:hover {
+            color: #007acc; 
+            transform: scale(1.2,1.2);
+        }
+
+        .faq {
+            flex: 70%;
+        }
+
+        .faq-item {
+            margin-top: 40px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+        }
+
+        .faq-question {
+            display: flex;
+            align-items: center;
+            font-size: 20px;
+            cursor: pointer;
+            color: #000;
+            font-weight: bold;
+            position: relative;
+        }
+
+        .faq-question::before {
+            content: "+";
+            font-size: 24px;
+            color: #007acc;
+            margin-right: 10px;
+        }
+
+        .faq-question.active::before {
+            content: "-";
+            font-size: 24px;
+            color: #007acc;
+        }
+
+        .faq-answer {
+            display: none;
+            font-size: 18px;
+            color: #666;
+            margin-top: 10px;
+            padding-left: 30px;
+        }
+
+        .faq-answer.active {
+            display: block;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .table-of-content img {
+            width: 30%;
+            height: 300px;
+            top:400px;
+            position: absolute;
+            left:30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="faq-container">
+        <div class="faq-header">Frequently Asked Questions?</div>
+        <div class="content">
+            <div class="table-of-content">
+                <h2>Table Of Contents</h2>
+                <ul>
+                    <li><a href="#" data-category="general">General</a></li>
+                    <li><a href="#" data-category="trust-safety">Trust & Safety</a></li>
+                    <li><a href="#" data-category="services">Services</a></li>
+                    <li><a href="#" data-category="billing">Billing</a></li>
+                    <li><a href="#" data-category="privacy">Privacy and Security</a></li>
+                </ul>
+                <img src="./project_images/people-asking-questions.avif" alt="Descriptive Alt Text">
+            </div>
+            <div class="faq">
+                <div class="faq-item" data-category="general">
+                    <div class="faq-question">How do I book a service?</div>
+                    <div class="faq-answer">Booking a service with Smart Service is easy. Just sign up,and Log in browse the available services, and click 'Book Service' to get started.</div>
+                </div>
+                    <div class="faq-item" data-category="general">
+                        <div class="faq-question">How can I reset my password?</div>
+                        <div class="faq-answer"> If you've forgotten your password, click on the 'Forgot Password' link on the login page. You will be prompted to enter your registered email address, and enter your new password</div>
+                    </div>
+             <div class="faq-item" data-category="general">
+                <div class="faq-question">What is Smart Service?</div>
+                <div class="faq-answer">
+                    Smart Service is a platform that connects users with trusted service professionals for various home and office needs. From cleaning to maintenance, we make it easy to find and book reliable services.
+                </div>
+            </div>
+            <div class="faq-item" data-category="general">
+                <div class="faq-question">How does Smart Service work?</div>
+                <div class="faq-answer">
+                    Simply sign up, browse our list of services, choose the one you need, and schedule an appointment. A professional will be assigned to you and will arrive at the scheduled time to complete the service.
+                </div>
+            </div>
+            <div class="faq-item" data-category="trust-safety">
+                <div class="faq-question">Are the service professionals verified?</div>
+                <div class="faq-answer">
+                    Yes, all our service professionals go through a rigorous background check and verification process to ensure safety and quality service.
+                </div>
+            </div>
+            <div class="faq-item" data-category="trust-safety">
+                <div class="faq-question">What measures are taken to ensure safety during the service?</div>
+                <div class="faq-answer">
+                    We prioritize safety by providing our professionals with safety training, and they are equipped with necessary tools and protective gear. Additionally, we verify their backgrounds before they join our platform.
+                </div>
+            </div>
+            <div class="faq-item" data-category="trust-safety">
+                <div class="faq-question">Are the service professionals verified?</div>
+                <div class="faq-answer">
+                    Yes, all our service professionals go through a rigorous background check and verification process to ensure safety and quality service.
+                </div>
+            </div>
+            <div class="faq-item" data-category="trust-safety">
+                <div class="faq-question">What measures are taken to ensure safety during the service?</div>
+                <div class="faq-answer">
+                    We prioritize safety by providing our professionals with safety training, and they are equipped with necessary tools and protective gear. Additionally, we verify their backgrounds before they join our platform.
+                </div>
+            </div>            
+            <div class="faq-item" data-category="services">
+                <div class="faq-question">What types of services are available?</div>
+                <div class="faq-answer">
+                    We offer a wide range of services including home cleaning, office cleaning, plumbing, electrical repairs, and more. Browse through our services section to find what you need.
+                </div>
+            </div>
+            <div class="faq-item" data-category="services">
+                <div class="faq-question">Can I book multiple services at once?</div>
+                <div class="faq-answer">
+                    Yes, you can book multiple services at once. Simply add the services you need to your booking, and our system will schedule them accordingly.
+                </div>
+            </div>
+            <div class="faq-item" data-category="services">
+                <div class="faq-question">Do you offer same-day services?</div>
+                <div class="faq-answer">
+                    Yes, we do offer same-day services for select categories. Availability may vary, so we recommend booking early to secure your preferred time slot.
+                </div>
+            </div>
+            <div class="faq-item" data-category="services">
+                <div class="faq-question">Can I customize a service package?</div>
+                <div class="faq-answer">
+                    Absolutely! You can customize a service package based on your specific needs. Contact our support team to create a tailored service plan just for you.
+                </div>
+            </div>
+            <div class="faq-item" data-category="billing">
+                <div class="faq-question">Are there any hidden charges?</div>
+                <div class="faq-answer">
+                    No, there are no hidden charges. All prices are transparently displayed before you make a booking, and the final bill will reflect only the agreed-upon charges.
+                </div>
+            </div>
+            <div class="faq-item" data-category="billing">
+                <div class="faq-question">Can I get a detailed breakdown of my bill?</div>
+                <div class="faq-answer">
+                    Yes, the invoice will include a detailed breakdown of all services and charges, including taxes. You can view and download it from your account dashboard.
+                </div>
+            </div>
+            <div class="faq-item" data-category="billing">
+                <div class="faq-question">What should I do if I am overcharged?</div>
+                <div class="faq-answer">
+                    If you believe you have been overcharged, please contact our customer support team within 48 hours of receiving the invoice. We will review your case and resolve any discrepancies.
+                </div>
+            </div>
+            <div class="faq-item"   data-category="billing">
+                <div class="faq-question">Can I cancel my service and get a refund?</div>
+                <div class="faq-answer">
+                    You can cancel your service up to 24 hours before the scheduled time for a full refund. For cancellations made less than 24 hours before, partial charges may apply.
+                </div>
+            </div>
+            <div class="faq-item" data-category="privacy">
+                <div class="faq-question">How is my personal information secured?</div>
+                <div class="faq-answer">
+                    We prioritize your privacy. Your data is protected through industry-standard encryption, and we do not share your information with third parties without your consent.
+                </div>
+            </div>
+            <div class="faq-item" data-category="privacy">
+                <div class="faq-question">Is online payment safe?</div>
+                <div class="faq-answer">
+                    Yes, all online transactions are secured using advanced encryption technologies, ensuring the safety of your payment details and preventing unauthorized access.
+                </div>
+            </div> <div class="faq-item" data-category="privacy">
+                <div class="faq-question">How do you handle my data after the service is completed?</div>
+                <div class="faq-answer">
+                    Your personal data is securely stored, and we only retain it for as long as necessary to provide our services and comply with legal requirements. We follow strict data retention policies to ensure your information remains secure.
+                </div>
+            </div>
+            <div class="faq-item" data-category="privacy">
+                <div class="faq-question">Can I delete my account and all associated data?</div>
+                <div class="faq-answer">
+                    Yes, you can request the deletion of your account and personal data at any time by contacting our support team. We will process your request in accordance with our data privacy policy.
+                </div>
+            </div>
+            <div class="faq-item" data-category="privacy">
+                <div class="faq-question">Do you share my information with service providers?</div>
+                <div class="faq-answer">
+                    We only share necessary information with our service providers to facilitate the service you requested. All service providers are bound by strict confidentiality agreements to protect your data.
+                </div>
+            </div>
+             
+        </div>
+    </div>
+    </div>
+
+    <script>
+        const faqQuestions = document.querySelectorAll('.faq-question');
+        const tableLinks = document.querySelectorAll('.table-of-content a');
+        const faqItems = document.querySelectorAll('.faq-item');
+
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                question.classList.toggle('active');
+                const answer = question.nextElementSibling;
+                answer.classList.toggle('active');
+            });
+        });
+
+        tableLinks.forEach(link => {
+            link.addEventListener('click', (event) => {
+                event.preventDefault();
+                const category = link.getAttribute('data-category');
+                
+                faqItems.forEach(item => {
+                    if (item.getAttribute('data-category') === category) {
+                        item.classList.remove('hidden');
+                    } else {
+                        item.classList.add('hidden');
+                    }
+                });
+            });
+        });
+
+        faqItems.forEach(item => {
+            if (item.getAttribute('data-category') !== 'general') {
+                item.classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>

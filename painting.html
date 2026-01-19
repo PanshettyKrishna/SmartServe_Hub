@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+      <link rel="icon" href="./project_images/favicon2.ico" type="image/x-icon">
+    <link rel="icon" href="./project_images/favicon2.png" type="image/png">
+    <link rel="shortcut icon" href="./project_images/favicon2.ico" type="image/x-icon">
+    <title>Smart Service</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            overflow-x:hidden;
+        }
+        nav {
+            background-color: #f5f5f5;
+            border-bottom: 1px solid #eaeaea;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 60px;
+        }
+
+        .nav-left span {
+            font-size: 35px;
+            font-weight: bold;
+            color: #000;
+        }
+
+        .nav-right a {
+            margin-right: 35px;
+            font-size: 26px;
+            color: #000;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-right a {
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+}
+.nav-right a {
+    transition: all 0.4s ease;
+    position: relative;
+    padding-left: 5px;
+    padding-top: 12px;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.nav-right a:nth-child(1)::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #000;
+    bottom: 0;
+    left: -100%;
+    transition: 0.4s;
+}
+
+.nav-right a:nth-child(1):hover::before {
+    left: 0;
+}
+
+.nav-right a:nth-child(2) {
+    position: relative;
+    z-index: 1;
+}
+
+.nav-right a:nth-child(2)::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 350%;
+    height: 350%;
+    background-color: #000;
+    transition: all 0.6s ease;
+    transform: translate(-50%, -50%) scale(0);
+    border-radius: 50%;
+    z-index: -1;
+}
+
+.nav-right a:nth-child(2):hover::before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.nav-right a:nth-child(2):hover {
+    color: #fff;
+}
+        .slider-container {
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .slider-wrapper {
+            display: flex;
+            transition: transform 0.5s ease;
+            width: max-content; /* Allows the slider to grow with content */
+        }
+        .slider-item {
+            flex: 0 0 auto;
+            text-align: center;
+            padding: 10px;
+            width: 350px;
+            height:400px;
+            box-sizing: border-box;
+        }
+        .slider-item img {
+            width: 100%;
+            height: 270px; 
+            border-radius: 8px;
+        }
+         h2 {
+            font-size: 40px;
+            margin-left:180px;
+
+        }
+        .slider-item p {
+            font-size: 25px;
+            margin: 12px 0 0 0;
+
+        }
+        .slider-button {
+            font-size: 50px;
+            cursor: pointer;
+            background-color: #fff;
+            border: none;
+            color: #000;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
+            padding: 0 10px;
+        }
+        .slider-button.left {
+            left: 0;
+        }
+        .slider-button.right {
+            right: 0;
+        }
+
+        #quick-repairs{
+            margin-top: -40px;
+        }
+        .quick-repair-container {
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .quick-repair-wrapper {
+            display: flex;
+            transition: transform 0.5s ease;
+            width: max-content;
+        }
+        .quick-repair-item {
+            flex: 0 0 auto;
+            text-align: center;
+            padding: 10px;
+            width: 300px;
+            height: 400px;
+            box-sizing: border-box;
+        }
+        .quick-repair-item img {
+            width: 100%;
+            height: 250px;
+            border-radius: 8px;
+        }
+        h2 {
+    font-size: 40px;
+    margin-left: 180px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+h2::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: #000;
+    margin-top: 8px;
+    margin-right: 80px;
+}
+
+        .quick-repair-item p {
+            font-size: 24px;
+            margin-top: 20px;
+            text-align: start;
+        }
+        .quick-repair-button {
+            font-size: 50px;
+            cursor: pointer;
+            background-color: #fff;
+            border: none;
+            color: #000;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
+            padding: 0 10px;
+        }
+        .quick-repair-button.left {
+            left: 0;
+        }
+        .quick-repair-button.right {
+            right: 0;
+        }
+        .quick-repair-item p {
+    margin: 8px 0 0;
+}
+
+.quick-repair-item .rating {
+    font-size: 18px;
+    color: #36352f; 
+    margin-top: 8px;
+    text-align: left;
+}
+
+.quick-repair-item .cost {
+    font-size: 16px;
+    text-align: left;
+    color: #453f3f;
+    margin-top: 8px;
+}
+        #more-details{
+            margin-top: 80px;
+        }
+        #more-details  h2{
+            margin-left: 340px;
+        }
+        .service-section {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: space-between;
+        margin-left: 100px;
+    }
+    .service-item {
+        padding: 15px;
+        border-radius: 5px;
+        flex: 1 1 calc(33.33% - 50px);
+        box-sizing: border-box;
+    }
+    .service-item h3 {
+        font-size: 25px;
+        width: 100%;
+    }
+    .service-types div{
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+    .service-types div:hover{
+        color:#4b1327;
+        transform: scale(1.1,1.1);
+    }
+    footer {
+            background-color: #f5f5f5;
+            padding: 40px 0;
+            border-top: 1px solid #eaeaea;
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            margin-top: 100px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: auto;
+            text-align:left;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: start;
+            justify-content: start;
+            margin-bottom: 20px; 
+        }
+
+        .footer-logo img {
+            width: 100px;
+            margin-right: 30px;
+        }
+
+        .footer-logo span {
+            font-size: 35px;
+            font-weight: 700;
+            color: #000;
+            margin-top: 5px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: start;
+            flex-wrap: wrap; 
+            margin-bottom: 30px; 
+            border-bottom: 1px solid #eaeaea; 
+            padding-bottom: 20px; 
+        }
+
+        .footer-column {
+            flex: 1;
+            margin: 10px 20px;
+            min-width: 200px; 
+        }
+
+        .footer-column h4 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 15px; 
+        }
+
+        .footer-column ul li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        .footer-column ul li a:hover {
+            color: #000;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content:start;
+            gap: 20px;
+        }
+
+        .social-icons a {
+            font-size: 25px;
+            color: #333;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: #000;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            font-size: 15px;
+            color: #000;
+            margin-top: 20px; 
+        }
+
+        .footer-bottom p {
+            margin-bottom: 5px;
+        }
+
+        .footer-bottom small {
+            color: #999;
+        }
+
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-left">
+            <span>Smart Service</span>
+        </div>
+        <div class="nav-right">
+            <a href="bookservice.html">Book Service</a>
+            <a href="contactus.html">Contact Us</a>
+        </div>
+    </nav>
+    <section>
+        <h2>Painting Services</h2>
+        <div class="slider-container">
+            <button class="slider-button left" onclick="prevSlide()">‹</button>
+            <div class="slider-wrapper" id="slider">
+                <div class="slider-item">
+                    <img src="https://media.istockphoto.com/id/468120950/photo/house-painter-painting-the-trim-and-shutters-of-home.jpg?s=612x612&w=0&k=20&c=vYOc_5bIpw-sLKfwLSMU2l0vC3tNn2E14s2-hTvOscA=" alt="AC Repair & Service">
+                    <p>Full Home Painting</p>
+                </div>
+                <div class="slider-item">
+                    <img src="https://www.thepackersmovers.com/blog/wp-content/uploads/2021/08/15-useful-interior-painting-tips-for-diy-painters.jpg" alt="Washing Machine Repair">
+                    <p>Room Painting</p>
+                </div>
+                <div class="slider-item">
+                    <img src="https://media.gettyimages.com/id/80033315/photo/applying-blue-paint-to-a-door-with-a-brush.jpg?s=612x612&w=0&k=20&c=TejPphX89kvgdnyIFCCCBn5J51Nfay46bbhBHoBmEQ8=" alt="Geyser Repair & Service">
+                    <p>Door Painting</p>
+                </div>
+                <div class="slider-item">
+                    <img src="https://paintgreen.com/wp-content/uploads/2022/07/Crown-Molding-Trim-Painting.jpg" alt="Water Purifier Repair & Service">
+                    <p>Trim and Molding Painting</p>
+                </div>
+                <div class="slider-item">
+                    <img src="https://img.freepik.com/free-photo/worker-pasting-wallpapers-glueing-wallpapers-home-man-worker-is-putting-up-wallpapers-wall-home-renovation-concept_166373-2212.jpg" alt="Television Repair">
+                    <p>Wallpaper Installation</p>
+                </div>
+                <div class="slider-item">
+                    <img src="data:image/jpeg;base64,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" alt="Extra Repair 1">
+                    <p>Commercial Buildings Painting</p>
+                </div>
+                <div class="slider-item">
+                    <img src="https://st2.depositphotos.com/1017986/5755/i/950/depositphotos_57557289-stock-photo-builder-working-with-grinding-tool.jpg" alt="Extra Repair 2">
+                    <p>Sanding and Smoothing Surfaces</p>
+                </div>
+                <div class="slider-item">
+                    <img src="https://cdn.mos.cms.futurecdn.net/AaPTZv98Ays68Cfjwz3Xbf-320-80.jpg" alt="Extra Repair 2">
+                    <p>Ceiling Painting</p>
+                </div>
+                <div class="slider-item">
+                    <img src="https://www.brushbrotherspaint.com/wp-content/uploads/2023/01/Epoxy-Coatings-Protect-Basement-Floors-2-scaled.jpg" alt="Extra Repair 2">
+                    <p>Epoxy Floor Coatings</p>
+                </div>
+                <div class="slider-item">
+                    <img src="https://i.pinimg.com/736x/1b/a1/e7/1ba1e7204d8701d5d14a6842630d8d75.jpg" alt="Extra Repair 2">
+                    <p>Murals and Custom Artwork</p>
+                </div>
+            </div>
+            <button class="slider-button right" onclick="nextSlide()">›</button>
+        </div>
+    </section>
+    <section id="quick-repair-section">
+        <h2>Quick Repairs</h2>
+        <div class="quick-repair-container">
+            <button class="quick-repair-button left" onclick="prevQuickRepair()">‹</button>
+            <div class="quick-repair-wrapper" id="quick-repair">
+                <div class="quick-repair-item">
+                    <img src="./project_images/PlumberMan.jpeg" alt="Plumber Visit">
+                    <p>Plumber Visit</p>
+                    <p class="rating">★ 4.5</p>
+                    <p class="cost">₹ 50</p>
+                </div>
+                <div class="quick-repair-item">
+                    <img src="https://img.freepik.com/premium-photo/male-hands-with-socket-tester-white-background_392895-375494.jpg?w=900" alt="Switch Repair">
+                    <p>Switch Repair</p>
+                    <p class="rating">★ 4.0</p>
+                    <p class="cost">₹ 40</p>  
+                </div>
+                <div class="quick-repair-item">
+                    <img src="https://img.freepik.com/free-photo/portrait-person-doing-arts-crafts_23-2151575723.jpg?t=st=1730111517~exp=1730115117~hmac=6d0476f4c1a485cd46eac786e88ef46dfa59453d0996b0e9e5ca89e9b8da73aa&w=996" alt="Geyser Repair & Service">
+                    <p>Drill for Wall Decor</p>
+                    <p class="rating">★ 4.7</p>
+                    <p class="cost">₹ 50</p>
+                </div>
+                <div class="quick-repair-item">
+                    <img src="./project_images/carpenter_man_1.jpg" alt="Water Purifier Repair & Service">
+                    <p>Carpenter Visit</p>
+                    <p class="rating">★ 4.3</p>
+                    <p class="cost">₹ 60</p>
+                </div>
+                <div class="quick-repair-item">
+                    <img src="https://img.freepik.com/premium-photo/smiling-young-handsome-male-electrician-stand-up-arm-cross_1221994-24744.jpg?w=1060" alt="Television Repair">
+                    <p>Electrician Visit</p>
+                    <p class="rating">★ 4.6</p>
+                    <p class="cost">₹ 50</p>
+                </div>
+                <div class="quick-repair-item">
+                    <img src="https://img.freepik.com/free-photo/hand-with-glove-disinfecting-faucet_23-2148705050.jpg?t=st=1730111409~exp=1730115009~hmac=786ef243e5d9982161b8cb598ddd5954297dbaea7361c231b7bac681dab6b5c7&w=996" alt="Microwave Repair">
+                    <p>Tap Repair</p>
+                    <p class="rating">★ 4.2</p>
+                    <p class="cost">₹ 80</p>
+                </div>
+                <div class="quick-repair-item">
+                    <img src="https://img.freepik.com/premium-photo/person-is-using-orange-black-electric-wires_982337-3022.jpg?w=740" alt="Electric Chimney Repair">
+                    <p>Switch Board Repair</p>
+                    <p class="rating">★ 4.4</p>
+                    <p class="cost">₹ 100</p>
+                </div>
+                <div class="quick-repair-item">
+                    <img src="https://www.shutterstock.com/image-illustration/realistic-3d-render-close-blank-600nw-2225524663.jpg" alt="Electric Chimney Repair">
+                    <p>Tap Installation/Replacement</p>
+                    <p class="rating">★ 4.4</p>
+                    <p class="cost">₹ 100</p>
+                </div>
+                <div class="quick-repair-item">
+                    <img src="https://cdn-idddf.nitrocdn.com/tRoeMwftJOobFbCVQwHGlkDIXJOaliDg/assets/images/optimized/rev-b4d6d88/www.acmeplumbing.com/wp-content/uploads/2022/01/8-natural-drain-clog-removers-1024x683.jpg" alt="Sink Unclogging">
+                    <p>Sink Unclogging</p>
+                    <p class="rating">★ 4.6</p>
+                    <p class="cost">₹ 70</p>
+                </div>
+                
+                <div class="quick-repair-item">
+                    <img src="https://img.freepik.com/premium-photo/technician-service-using-brush-cleaning-air-conditioner_35076-3608.jpg" alt="AC Filter Cleaning">
+                    <p>AC Filter Cleaning</p>
+                    <p class="rating">★ 4.7</p>
+                    <p class="cost">₹ 150</p>
+                </div>
+                
+                <div class="quick-repair-item">
+                    <img src="https://static.cms.yp.ca/ecms/media/1/iStock_000042127984_Medium-1427730842-600x360.jpg" alt="Door Lock Repair">
+                    <p>Door Lock Repair</p>
+                    <p class="rating">★ 4.3</p>
+                    <p class="cost">₹ 70</p>
+                </div>
+                
+                <div class="quick-repair-item">
+                    <img src="https://thumbs.dreamstime.com/b/water-purification-filter-install-water-purification-filter-install-maintenance-service-253537514.jpg" alt="Water Purifier Maintenance">
+                    <p>Water Purifier Maintenance</p>
+                    <p class="rating">★ 4.7</p>
+                    <p class="cost">₹ 120</p>
+                </div>
+                
+            </div>
+            <button class="quick-repair-button right" onclick="nextQuickRepair()">›</button>
+        </div>
+    </section>
+    
+    <section id="more-details">
+        <h2>More Details about Our Painting Services</h2>
+        <div class="service-section">
+            
+            <div class="service-item">
+                <h3>Interior Painting</h3>
+                <div class="service-types">
+                    <div>Room Painting</div>
+                    <div>Ceiling Painting</div>
+                    <div>Accent Wall Creation</div>
+                    <div>Trim and Molding Painting</div>
+                    <div>Decorative Finish Options</div>
+                </div>
+            </div>
+            
+            <div class="service-item">
+                <h3>Exterior Painting</h3>
+                <div class="service-types">
+                    <div>House Exterior Painting</div>
+                    <div>Deck and Fence Painting</div>
+                    <div>Siding Painting</div>
+                    <div>Power Washing Services</div>
+                    <div>Weatherproofing and Sealing</div>
+                </div>
+            </div>
+            
+            <div class="service-item">
+                <h3>Commercial Painting</h3>
+                <div class="service-types">
+                    <div>Office Space Painting</div>
+                    <div>Retail Storefront Painting</div>
+                    <div>Warehouse Painting</div>
+                    <div>School and Facility Painting</div>
+                    <div>Industrial Facility Painting</div>
+                </div>
+            </div>
+            
+            <div class="service-item">
+                <h3>Specialty Painting</h3>
+                <div class="service-types">
+                    <div>Faux Finishing Techniques</div>
+                    <div>Texture Painting</div>
+                    <div>Murals and Custom Artwork</div>
+                    <div>Epoxy Floor Coatings</div>
+                    <div>Spray Painting</div>
+                </div>
+            </div>
+            
+            <div class="service-item">
+                <h3>Surface Preparation</h3>
+                <div class="service-types">
+                    <div>Wall Repair and Patching</div>
+                    <div>Sanding and Smoothing Surfaces</div>
+                    <div>Wallpaper Removal</div>
+                    <div>Priming Services</div>
+                    <div>Lead-Based Paint Removal</div>
+                </div>
+            </div>
+            
+            <div class="service-item">
+                <h3>Protective Coatings & Sealants</h3>
+                <div class="service-types">
+                    <div>Waterproof Coatings</div>
+                    <div>Anti-Corrosion Coatings</div>
+                    <div>UV-Resistant Finishes</div>
+                    <div>Mold and Mildew Prevention</div>
+                    <div>Concrete and Metal Sealants</div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+    
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="./project_images/logo.png" alt="Smart Service Logo">
+                <span>Smart Service</span>
+            </div>
+            
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="aboutus.html">About us</a></li>
+                        <li><a href="terms.html">Terms & conditions</a></li>
+                        <li><a href="privacypolicy.html">Privacy policy</a></li>
+                        <li><a href="impact.html">Smart Service impact</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>For customers</h4>
+                    <ul>
+                        <li><a href="seereviews.jsp">Customer reviews</a></li>
+                        <li><a href="#available_services">Categories near you</a></li>
+                        <li><a href="fnadq.html">F & Q</a></li>
+                        <li><a href="contactus.html">Contact us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>For partners</h4>
+                    <ul>
+                        <li><a href="registerprof.html">Register as a professional</a></li>
+                         <li><a href="p_privacypolicy.html">Privacy policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Social Links</h4>
+                    <div class="social-icons">
+                    <a href="https://x.com/Smart_ServiceX"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.facebook.com/"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/smartserviceig/"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="footer-bottom">
+            <p>&copy; Copyright 2024 Smart Service. All rights reserved.</p>
+        </div>
+    </footer>
+    <script>
+        let currentIndex = 0;
+        const slider = document.getElementById("slider");
+        const itemsToShow = 3; // Number of items to show at once
+        const totalItems = slider.children.length;
+
+        function updateSlider() {
+            const itemWidth = slider.children[0].offsetWidth;
+            slider.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+        }
+
+        function prevSlide() {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateSlider();
+            }
+        }
+
+        function nextSlide() {
+            if (currentIndex < totalItems - itemsToShow) {
+                currentIndex++;
+                updateSlider();
+            }
+        }
+
+        window.addEventListener("resize", updateSlider);
+
+        let currentQuickRepairIndex = 0;
+        const quickRepair = document.getElementById("quick-repair");
+        const quickRepairsToShow = 3;
+
+        function updateQuickRepair() {
+            const quickRepairWidth = quickRepair.children[0].offsetWidth;
+            quickRepair.style.transform = `translateX(-${currentQuickRepairIndex * quickRepairWidth}px)`;
+        }
+
+        function prevQuickRepair() {
+            if (currentQuickRepairIndex > 0) {
+                currentQuickRepairIndex--;
+                updateQuickRepair();
+            }
+        }
+
+        function nextQuickRepair() {
+            if (currentQuickRepairIndex < quickRepair.children.length - quickRepairsToShow) {
+                currentQuickRepairIndex++;
+                updateQuickRepair();
+            }
+        }
+
+        window.addEventListener("resize", updateQuickRepair);
+    </script>
+</body>
+</html>
+    

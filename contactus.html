@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="icon" href="./project_images/favicon2.ico" type="image/x-icon">
+    <link rel="icon" href="./project_images/favicon2.png" type="image/png">
+    <link rel="shortcut icon" href="./project_images/favicon2.ico" type="image/x-icon">
+    <title>Smart Service</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f8f9fa;
+            overflow-x: hidden;
+        }
+
+        .container {
+            display: flex;
+            background-color: #fff;
+            width:100%;
+            border-radius: 10px;
+        }
+
+        .form-section {
+            width: 60%;
+            padding: 40px;
+            box-sizing: border-box;
+        }
+        .form-section h2 {
+            font-size: 40px;
+            margin-left:480px;
+            margin-top:20px;
+        }
+
+        .form-section h2::after {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 2px;
+            background-color: #ea437e;
+            margin: 10px auto 0;
+        }
+        .form-section h1 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            margin-top: -30px;
+        }
+
+        .form-section label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .form-section input[type="text"],
+        .form-section input[type="email"],
+        .form-section textarea,
+        .form-section select {
+            width: 90%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .form-section #phone
+        {
+            width:78%;
+        }
+        .form-section textarea {
+            resize: vertical;
+            height: 100px;
+        }
+
+        .form-section button {
+            background-color: #ea437e;
+            color: #fff;
+            padding: 12px 20px;
+            font-size: 20px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            width: 18%;
+            margin-left: 20px;
+        }
+
+        .form-section button:hover {
+            background-color: #F22570;
+            transform: scale(1.1,1.1);
+        }
+
+        .image-section {
+            width: 50%;
+            background-image: url('./project_images/Contact-us.png');
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="form-section">
+        <div class="logo">
+            <h2>Smart Service</h2>
+        </div>
+        <h1>Contact Us</h1>
+        <form action="contactus.jsp" method="post">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" placeholder="Enter full name" required>
+
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+
+            <label for="phone">Enter Phone Number</label>
+            <div style="display: flex; gap: 10px;">
+                <select id="country-code" name="country-code" style="width: 80px;">
+                    <option value="+91">+91</option>
+                    <option value="+1">+1</option>
+                    <!-- Add other country codes as needed -->
+                </select>
+                <input type="text" id="phone" name="phone" placeholder="Phone Number" required>
+            </div>
+
+            <label for="message">Enter Message</label>
+            <textarea id="message" name="message" placeholder="Enter message" required></textarea>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <div class="image-section"></div>
+</div>
+
+</body>
+</html>

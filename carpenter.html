@@ -1,0 +1,707 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+      <link rel="icon" href="./project_images/favicon2.ico" type="image/x-icon">
+    <link rel="icon" href="./project_images/favicon2.png" type="image/png">
+    <link rel="shortcut icon" href="./project_images/favicon2.ico" type="image/x-icon">
+    <title>Smart Service</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            overflow-x: hidden;
+        }
+        nav {
+            background-color: #f5f5f5;
+            border-bottom: 1px solid #eaeaea;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 60px;
+        }
+
+        .nav-left span {
+            font-size: 35px;
+            font-weight: bold;
+            color: #000;
+        }
+
+        .nav-right a {
+            margin-right: 30px;
+            font-size: 25px;
+            color: #000;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-right a {
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+}
+.nav-right a {
+    transition: all 0.4s ease;
+    position: relative;
+    padding: 5px 10px;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.nav-right a:nth-child(1)::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #000;
+    bottom: 0;
+    left: -100%;
+    transition: 0.4s;
+}
+
+.nav-right a:nth-child(1):hover::before {
+    left: 0;
+}
+
+.nav-right a:nth-child(2) {
+    position: relative;
+    z-index: 1;
+}
+
+.nav-right a:nth-child(2)::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background-color: #000;
+    transition: all 0.6s ease;
+    transform: translate(-50%, -50%) scale(0);
+    border-radius: 50%;
+    z-index: -1;
+}
+
+.nav-right a:nth-child(2):hover::before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.nav-right a:nth-child(2):hover {
+    color: #fff;
+}
+        .slider-container {
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .slider-wrapper {
+            display: flex;
+            transition: transform 0.5s ease;
+            width: max-content; /* Allows the slider to grow with content */
+        }
+        .slider-item {
+            flex: 0 0 auto;
+            text-align: center;
+            padding: 10px;
+            width: 350px;
+            height:400px;
+            box-sizing: border-box;
+        }
+        .slider-item img {
+            width: 100%;
+            height: 270px; 
+            border-radius: 8px;
+        }
+         h2 {
+            font-size: 40px;
+            margin-left:180px;
+
+        }
+        .slider-item p {
+            font-size: 25px;
+            margin: 12px 0 0 0;
+
+        }
+        .slider-button {
+            font-size: 50px;
+            cursor: pointer;
+            background-color: #fff;
+            border: none;
+            color: #000;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
+            padding: 0 10px;
+        }
+        .slider-button.left {
+            left: 0;
+        }
+        .slider-button.right {
+            right: 0;
+        }
+
+        #quick-repairs{
+            margin-top: -30px;
+        }
+        .quick-repair-container {
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .quick-repair-wrapper {
+            display: flex;
+            transition: transform 0.5s ease;
+            width: max-content;
+        }
+        .quick-repair-item {
+            flex: 0 0 auto;
+            text-align: center;
+            padding: 10px;
+            width: 300px;
+            height: 400px;
+            box-sizing: border-box;
+        }
+        .quick-repair-item img {
+            width: 100%;
+            height: 250px;
+            border-radius: 8px;
+        }
+        h2 {
+    font-size: 40px;
+    margin-left: 180px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+h2::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: #000;
+    margin-top: 8px;
+    margin-right: 80px;
+}
+        .quick-repair-item p {
+            font-size: 24px;
+            margin-top: 20px;
+            text-align: start;
+        }
+        .quick-repair-button {
+            font-size: 50px;
+            cursor: pointer;
+            background-color: #fff;
+            border: none;
+            color: #000;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
+            padding: 0 10px;
+        }
+        .quick-repair-button.left {
+            left: 0;
+        }
+        .quick-repair-button.right {
+            right: 0;
+        }
+        .quick-repair-item p {
+    margin: 8px 0 0;
+}
+
+.quick-repair-item .rating {
+    font-size: 18px;
+    color: #36352f; 
+    margin-top: 8px;
+    text-align: left;
+}
+
+.quick-repair-item .cost {
+    font-size: 16px;
+    text-align: left;
+    color: #453f3f;
+    margin-top: 8px;
+}
+        #more-details{
+            margin-top: 100px;
+        }
+        #more-details  h2{
+            margin-left: 350px;
+        }
+        .service-section {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: space-between;
+        margin-left: 100px;
+    }
+    .service-item {
+        padding: 15px;
+        border-radius: 5px;
+        flex: 1 1 calc(33.33% - 50px);
+        box-sizing: border-box;
+    }
+    .service-item h3 {
+        font-size: 25px;
+        width: 100%;
+    }
+    .service-types div{
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+    .service-types div:hover{
+        color:#4b1327;
+        transform: scale(1.1,1.1);
+    }
+    footer {
+            background-color: #f5f5f5;
+            padding: 40px 0;
+            border-top: 1px solid #eaeaea;
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            margin-top: 100px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: auto;
+            text-align:left;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: start;
+            justify-content: start;
+            margin-bottom: 20px; 
+        }
+
+        .footer-logo img {
+            width: 100px;
+            margin-right: 30px;
+        }
+
+        .footer-logo span {
+            font-size: 35px;
+            font-weight: 700;
+            color: #000;
+            margin-top: 5px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: start;
+            flex-wrap: wrap; 
+            margin-bottom: 30px; 
+            border-bottom: 1px solid #eaeaea; 
+            padding-bottom: 20px; 
+        }
+
+        .footer-column {
+            flex: 1;
+            margin: 10px 20px;
+            min-width: 200px; 
+        }
+
+        .footer-column h4 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 15px; 
+        }
+
+        .footer-column ul li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        .footer-column ul li a:hover {
+            color: #000;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content:start;
+            gap: 20px;
+        }
+
+        .social-icons a {
+            font-size: 25px;
+            color: #333;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: #000;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            font-size: 15px;
+            color: #000;
+            margin-top: 20px; 
+        }
+
+        .footer-bottom p {
+            margin-bottom: 5px;
+        }
+
+        .footer-bottom small {
+            color: #999;
+        }
+
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-left">
+            <span>Smart Service</span>
+        </div>
+        <div class="nav-right">
+            <a href="bookservice.html">Book Service</a>
+            <a href="signup.html">Contact Us</a>
+        </div>
+    </nav>
+    <section>
+        <h2>Carpentry service-types</h2>
+        <div class="slider-container">
+            <button class="slider-button left" onclick="prevSlide()">‹</button>
+            <div class="slider-wrapper" id="slider">
+                <div class="slider-item">
+                    <img src="https://media.istockphoto.com/id/134581710/photo/man-constructing-cabinet-units-in-new-kitchen.jpg?s=612x612&w=0&k=20&c=qM8RekDmXiTt-T66n2AJSW7hiBJ6whwctBPw9D-j2xk=" alt="AC Repair & Service">
+                    <p>Cupboard Installation</p>
+                </div>
+                <div class="slider-item">
+                    <img src="data:image/jpeg;base64,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 " alt="Washing Machine Repair">
+                    <p>Driil & Hang</p>
+                </div>
+                <div class="slider-item">
+                    <img src="https://images.pexels.com/photos/277559/pexels-photo-277559.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="Geyser Repair & Service">
+                    <p>Doors</p>
+                </div>
+                <div class="slider-item">
+                    <img src="https://images.unsplash.com/photo-1509644851169-2acc08aa25b5?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGN1cnRhaW5zfGVufDB8fDB8fHww" alt="Water Purifier Repair & Service">
+                    <p>Windows & Curtain</p>
+                </div>
+                <div class="slider-item">
+                    <img src="data:image/jpeg;base64,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" alt="Television Repair">
+                    <p>Bed</p>
+                </div>
+                <div class="slider-item">
+                    <img src="https://media.istockphoto.com/id/459066815/photo/couple-putting-together-self-assembly-furniture-in-new-home.jpg?s=612x612&w=0&k=20&c=1ozEnXav5VqjAYL1F1kw03eUDV_3thBnOFHtIsxXlWI=" alt="Extra Repair 1">
+                    <p>Furniture Assembly</p>
+                </div>
+                <div class="slider-item">
+                    <img src="https://images.livspace-cdn.com/w:3840/plain/https://d3gq2merok8n5r.cloudfront.net/abhinav/ond-1634120396-Obfdc/jas-2024-1720241010-wAOzD/category-units-1720241275-Jc6G0/wardrobe-1722336026-pExoq/wr-245-1722336040-VuP7A.jpg" alt="Extra Repair 2">
+                    <p>Wardrobe Installation</p>
+                </div>
+                <div class="slider-item">
+                    <img src="https://png.pngtree.com/background/20230427/original/pngtree-closet-full-of-hanging-on-wooden-hangers-picture-image_2494335.jpg" alt="Extra Repair 2">
+                    <p>Clothes Hanger</p>
+                </div>
+                <div class="slider-item">
+                    <img src="https://thediymommy.com/wp-content/uploads/2022/07/DIY-Planter-Boxes-with-MicroPro-Sienna-10-540x720.jpg" alt="Extra Repair 2">
+                    <p>Custom Furniture</p>
+                </div>
+                <div class="slider-item">
+                    <img src="https://media.istockphoto.com/id/1475651310/photo/close-up-of-hands-of-restorer-reupholstering-antique-wooden-chair-with-cabriole-legs.jpg?s=612x612&w=0&k=20&c=Y9c_I9exLqUgo3GdwREeFPwG99TLnCCeWQID_7Ua2Gk=" alt="Extra Repair 2">
+                    <p>Furniture Repair</p>
+                </div>
+            </div>
+            <button class="slider-button right" onclick="nextSlide()">›</button>
+        </div>
+    </section>
+    <section id="quick-repair-section">
+        <h2>Quick Repairs</h2>
+        <div class="quick-repair-container">
+            <button class="quick-repair-button left" onclick="prevQuickRepair()">‹</button>
+            <div class="quick-repair-wrapper" id="quick-repair">
+                <div class="quick-repair-item">
+                    <img src="./project_images/PlumberMan.jpeg" alt="Plumber Visit">
+                    <p>Plumber Visit</p>
+                    <p class="rating">★ 4.5</p>
+                    <p class="cost">₹ 50</p>
+                </div>
+                <div class="quick-repair-item">
+                    <img src="https://img.freepik.com/premium-photo/male-hands-with-socket-tester-white-background_392895-375494.jpg?w=900" alt="Switch Repair">
+                    <p>Switch Repair</p>
+                    <p class="rating">★ 4.0</p>
+                    <p class="cost">₹ 40</p>  
+                </div>
+                <div class="quick-repair-item">
+                    <img src="https://img.freepik.com/free-photo/portrait-person-doing-arts-crafts_23-2151575723.jpg?t=st=1730111517~exp=1730115117~hmac=6d0476f4c1a485cd46eac786e88ef46dfa59453d0996b0e9e5ca89e9b8da73aa&w=996" alt="Geyser Repair & Service">
+                    <p>Drill for Wall Decor</p>
+                    <p class="rating">★ 4.7</p>
+                    <p class="cost">₹ 50</p>
+                </div>
+                <div class="quick-repair-item">
+                    <img src="./project_images/carpenter_man_1.jpg" alt="Water Purifier Repair & Service">
+                    <p>Carpenter Visit</p>
+                    <p class="rating">★ 4.3</p>
+                    <p class="cost">₹ 60</p>
+                </div>
+                <div class="quick-repair-item">
+                    <img src="https://img.freepik.com/premium-photo/smiling-young-handsome-male-electrician-stand-up-arm-cross_1221994-24744.jpg?w=1060" alt="Television Repair">
+                    <p>Electrician Visit</p>
+                    <p class="rating">★ 4.6</p>
+                    <p class="cost">₹ 50</p>
+                </div>
+                <div class="quick-repair-item">
+                    <img src="https://img.freepik.com/free-photo/hand-with-glove-disinfecting-faucet_23-2148705050.jpg?t=st=1730111409~exp=1730115009~hmac=786ef243e5d9982161b8cb598ddd5954297dbaea7361c231b7bac681dab6b5c7&w=996" alt="Microwave Repair">
+                    <p>Tap Repair</p>
+                    <p class="rating">★ 4.2</p>
+                    <p class="cost">₹ 80</p>
+                </div>
+                <div class="quick-repair-item">
+                    <img src="https://img.freepik.com/premium-photo/person-is-using-orange-black-electric-wires_982337-3022.jpg?w=740" alt="Electric Chimney Repair">
+                    <p>Switch Board Repair</p>
+                    <p class="rating">★ 4.4</p>
+                    <p class="cost">₹ 100</p>
+                </div>
+                <div class="quick-repair-item">
+                    <img src="https://www.shutterstock.com/image-illustration/realistic-3d-render-close-blank-600nw-2225524663.jpg" alt="Electric Chimney Repair">
+                    <p>Tap Installation/Replacement</p>
+                    <p class="rating">★ 4.4</p>
+                    <p class="cost">₹ 100</p>
+                </div>
+                <div class="quick-repair-item">
+                    <img src="https://cdn-idddf.nitrocdn.com/tRoeMwftJOobFbCVQwHGlkDIXJOaliDg/assets/images/optimized/rev-b4d6d88/www.acmeplumbing.com/wp-content/uploads/2022/01/8-natural-drain-clog-removers-1024x683.jpg" alt="Sink Unclogging">
+                    <p>Sink Unclogging</p>
+                    <p class="rating">★ 4.6</p>
+                    <p class="cost">₹ 70</p>
+                </div>
+                
+                <div class="quick-repair-item">
+                    <img src="https://img.freepik.com/premium-photo/technician-service-using-brush-cleaning-air-conditioner_35076-3608.jpg" alt="AC Filter Cleaning">
+                    <p>AC Filter Cleaning</p>
+                    <p class="rating">★ 4.7</p>
+                    <p class="cost">₹ 150</p>
+                </div>
+                
+                <div class="quick-repair-item">
+                    <img src="https://static.cms.yp.ca/ecms/media/1/iStock_000042127984_Medium-1427730842-600x360.jpg" alt="Door Lock Repair">
+                    <p>Door Lock Repair</p>
+                    <p class="rating">★ 4.3</p>
+                    <p class="cost">₹ 70</p>
+                </div>
+                
+                <div class="quick-repair-item">
+                    <img src="https://thumbs.dreamstime.com/b/water-purification-filter-install-water-purification-filter-install-maintenance-service-253537514.jpg" alt="Water Purifier Maintenance">
+                    <p>Water Purifier Maintenance</p>
+                    <p class="rating">★ 4.7</p>
+                    <p class="cost">₹ 120</p>
+                </div>
+                
+            </div>
+            <button class="quick-repair-button right" onclick="nextQuickRepair()">›</button>
+        </div>
+    </section>
+    <section id="more-details">
+        <h2>More Details about Our Carpentry Services</h2>
+        <div class="service-section">
+            
+            <div class="service-item">
+                <h3>Furniture Repair & Customization</h3>
+                <div class="service-types">
+                    <div>Repair of Broken Furniture</div>
+                    <div>Custom Furniture Design</div>
+                    <div>Refinishing and Polishing</div>
+                    <div>Assembly of Flat-Pack Furniture</div>
+                    <div>Wooden Storage Solutions</div>
+                </div>
+            </div>
+            
+            <div class="service-item">
+                <h3>Door and Window Services</h3>
+                <div class="service-types">
+                    <div>Door Installation and Repair</div>
+                    <div>Window Frame Repair</div>
+                    <div>Weather Stripping Installation</div>
+                    <div>Custom Window Treatments</div>
+                    <div>Lock Installation and Repair</div>
+                </div>
+            </div>
+            
+            <div class="service-item">
+                <h3>Cabinetry Services</h3>
+                <div class="service-types">
+                    <div>Custom Cabinet Design</div>
+                    <div>Installation of Kitchen Cabinets</div>
+                    <div>Bathroom Vanity Installation</div>
+                    <div>Cabinet Refacing</div>
+                    <div>Drawer and Shelf Installation</div>
+                </div>
+            </div>
+            
+            <div class="service-item">
+                <h3>Wooden Flooring Services</h3>
+                <div class="service-types">
+                    <div>Installation of Wooden Flooring</div>
+                    <div>Refinishing Hardwood Floors</div>
+                    <div>Repair of Damaged Flooring</div>
+                    <div>Baseboard Installation</div>
+                    <div>Floor Inspections</div>
+                </div>
+            </div>
+            
+            <div class="service-item">
+                <h3>Outdoor Carpentry</h3>
+                <div class="service-types">
+                    <div>Deck Construction and Repair</div>
+                    <div>Installation of Pergolas</div>
+                    <div>Garden Shed Construction</div>
+                    <div>Wooden Fence Installation</div>
+                    <div>Outdoor Furniture Repair</div>
+                </div>
+            </div>
+            
+            <div class="service-item">
+                <h3>Custom Shelving Solutions</h3>
+                <div class="service-types">
+                    <div>Wall-Mounted Shelves</div>
+                    <div>Corner Shelves</div>
+                    <div>Bookcase Construction</div>
+                    <div>Storage Solutions for Closets</div>
+                    <div>Display Shelves for Collections</div>
+                </div>
+            </div>
+    
+            <div class="service-item">
+                <h3>Home Renovation Projects</h3>
+                <div class="service-types">
+                    <div>Complete Room Remodels</div>
+                    <div>Custom Built-Ins</div>
+                    <div>Installation of Trim and Molding</div>
+                    <div>Interior Door Upgrades</div>
+                    <div>General Remodeling Services</div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="./project_images/logo.png" alt="Smart Service Logo">
+                <span>Smart Service</span>
+            </div>
+            
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="aboutus.html">About us</a></li>
+                        <li><a href="terms.html">Terms & conditions</a></li>
+                        <li><a href="privacypolicy.html">Privacy policy</a></li>
+                        <li><a href="impact.html">Smart Service impact</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>For customers</h4>
+                    <ul>
+                        <li><a href="seereviews.jsp">Customer reviews</a></li>
+                        <li><a href="#available_services">Categories near you</a></li>
+                        <li><a href="fnadq.html">F & Q</a></li>
+                        <li><a href="contactus.html">Contact us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>For partners</h4>
+                    <ul>
+                        <li><a href="registerprof.html">Register as a professional</a></li>
+                         <li><a href="p_privacypolicy.html">Privacy policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Social Links</h4>
+                    <div class="social-icons">
+                         <a href="https://x.com/Smart_ServiceX"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.facebook.com/"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/smartserviceig/"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="footer-bottom">
+            <p>&copy; Copyright 2024 Smart Service. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script>
+        let currentIndex = 0;
+        const slider = document.getElementById("slider");
+        const itemsToShow = 3; // Number of items to show at once
+        const totalItems = slider.children.length;
+
+        function updateSlider() {
+            const itemWidth = slider.children[0].offsetWidth;
+            slider.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+        }
+
+        function prevSlide() {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateSlider();
+            }
+        }
+
+        function nextSlide() {
+            if (currentIndex < totalItems - itemsToShow) {
+                currentIndex++;
+                updateSlider();
+            }
+        }
+
+        window.addEventListener("resize", updateSlider);
+
+        let currentQuickRepairIndex = 0;
+        const quickRepair = document.getElementById("quick-repair");
+        const quickRepairsToShow = 3;
+
+        function updateQuickRepair() {
+            const quickRepairWidth = quickRepair.children[0].offsetWidth;
+            quickRepair.style.transform = `translateX(-${currentQuickRepairIndex * quickRepairWidth}px)`;
+        }
+ 
+        function prevQuickRepair() {
+            if (currentQuickRepairIndex > 0) {
+                currentQuickRepairIndex--;
+                updateQuickRepair();
+            }
+        }
+
+        function nextQuickRepair() {
+            if (currentQuickRepairIndex < quickRepair.children.length - quickRepairsToShow) {
+                currentQuickRepairIndex++;
+                updateQuickRepair();
+            }
+        }
+
+        window.addEventListener("resize", updateQuickRepair);
+    </script>
+</body>
+</html>
+    

@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+      <link rel="icon" href="./project_images/favicon2.ico" type="image/x-icon">
+    <link rel="icon" href="./project_images/favicon2.png" type="image/png">
+    <link rel="shortcut icon" href="./project_images/favicon2.ico" type="image/x-icon">
+    <title>Smart Service</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            overflow-x:hidden;
+        }
+        nav {
+            background-color: #f5f5f5;
+            border-bottom: 1px solid #eaeaea;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 60px;
+        }
+
+        .nav-left span {
+            font-size: 35px;
+            font-weight: bold;
+            color: #000;
+        }
+
+        .nav-right a {
+            margin-right: 30px;
+            font-size: 25px;
+            color: #000;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-right a {
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+}
+.nav-right a {
+    transition: all 0.4s ease;
+    position: relative;
+    padding: 5px 10px;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.nav-right a:nth-child(1)::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #000;
+    bottom: 0;
+    left: -100%;
+    transition: 0.4s;
+}
+
+.nav-right a:nth-child(1):hover::before {
+    left: 0;
+}
+
+.nav-right a:nth-child(2) {
+    position: relative;
+    z-index: 1;
+}
+
+.nav-right a:nth-child(2)::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background-color: #000;
+    transition: all 0.6s ease;
+    transform: translate(-50%, -50%) scale(0);
+    border-radius: 50%;
+    z-index: -1;
+}
+
+.nav-right a:nth-child(2):hover::before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.nav-right a:nth-child(2):hover {
+    color: #fff;
+}
+        .slider-container {
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .slider-wrapper {
+            display: flex;
+            transition: transform 0.5s ease;
+            width: max-content; /* Allows the slider to grow with content */
+        }
+        .slider-item {
+            flex: 0 0 auto;
+            text-align: center;
+            padding: 10px;
+            width: 350px;
+            height:400px;
+            box-sizing: border-box;
+        }
+        .slider-item img {
+            width: 100%;
+            height: 270px; /* Adjust height as needed */
+            border-radius: 8px;
+        }
+        h2 {
+    font-size: 40px;
+    margin-left: 100px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+h2::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: #000;
+    margin-top: 8px;
+    margin-right: 80px;
+}
+        .slider-item p {
+            font-size: 25px;
+            margin: 12px 0 0 0;
+
+        }
+        .slider-button {
+            font-size: 50px;
+            cursor: pointer;
+            background-color: #fff;
+            border: none;
+            color: #000;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
+            padding: 0 10px;
+        }
+        .slider-button.left {
+            left: 0;
+        }
+        .slider-button.right {
+            right: 0;
+        }
+
+        #quick-repairs{
+            margin-top: -40px;
+        }
+        .quick-repair-container {
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .quick-repair-wrapper {
+            display: flex;
+            transition: transform 0.5s ease;
+            width: max-content;
+        }
+        .quick-repair-item {
+            flex: 0 0 auto;
+            text-align: center;
+            padding: 10px;
+            width: 300px;
+            height: 400px;
+            box-sizing: border-box;
+        }
+        .quick-repair-item img {
+            width: 100%;
+            height: 280px;
+            border-radius: 8px;
+        }
+        h2 {
+            font-size: 40px;
+            margin-left:180px;
+        }
+        .quick-repair-item p {
+            text-align: start;
+            font-size: 20px;
+            margin: 12px 0 0 0;
+        }
+        .quick-repair-button {
+            font-size: 40px;
+            cursor: pointer;
+            background-color: #fff;
+            border: none;
+            color: #000;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
+            padding: 0 10px;
+        }
+        .quick-repair-button.left {
+            left: 0;
+        }
+        .quick-repair-button.right {
+            right: 0;
+        }
+        .quick-repair-item .rating {
+    font-size: 18px;
+    color: #36352f; 
+    margin-top: 8px;
+    text-align: left;
+}
+
+.quick-repair-item .cost {
+    font-size: 16px;
+    text-align: left;
+    color: #453f3f;
+    margin-top: 8px;
+}
+        #more-details{
+            margin-top: 80px;
+        }
+        #more-details  h2{
+            margin-left: 450px;
+        }
+        .service-section {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: space-between;
+        margin-left: 100px;
+    }
+    .service-item {
+        padding: 15px;
+        border-radius: 5px;
+        flex: 1 1 calc(33.33% - 50px); /* Three items per row */
+        box-sizing: border-box;
+    }
+    .service-item h3 {
+        font-size: 25px;
+        width: 100%;
+    }
+    .service-types div{
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+    footer {
+            background-color: #f5f5f5;
+            padding: 40px 0;
+            border-top: 1px solid #eaeaea;
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            margin-top: 100px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: auto;
+            text-align:left;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: start;
+            justify-content: start;
+            margin-bottom: 20px; 
+        }
+
+        .footer-logo img {
+            width: 100px;
+            margin-right: 30px;
+        }
+
+        .footer-logo span {
+            font-size: 35px;
+            font-weight: 700;
+            color: #000;
+            margin-top: 5px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: start;
+            flex-wrap: wrap; 
+            margin-bottom: 30px; 
+            border-bottom: 1px solid #eaeaea; 
+            padding-bottom: 20px; 
+        }
+
+        .footer-column {
+            flex: 1;
+            margin: 10px 20px;
+            min-width: 200px; 
+        }
+
+        .footer-column h4 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 15px; 
+        }
+
+        .footer-column ul li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        .footer-column ul li a:hover {
+            color: #000;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content:start;
+            gap: 20px;
+        }
+
+        .social-icons a {
+            font-size: 25px;
+            color: #333;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: #000;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            font-size: 15px;
+            color: #000;
+            margin-top: 20px; 
+        }
+
+        .footer-bottom p {
+            margin-bottom: 5px;
+        }
+
+        .footer-bottom small {
+            color: #999;
+        }
+
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-left">
+            <span>Smart Service</span>
+        </div>
+        <div class="nav-right">
+            <a href="bookservice.html">Book Service</a>
+            <a href="signup.html">Contact Us</a>
+        </div>
+    </nav>
+    <section>
+        <h2>Appliances Repairs</h2>
+        <div class="slider-container">
+            <button class="slider-button left" onclick="prevSlide()">‹</button>
+            <div class="slider-wrapper" id="slider">
+                <div class="slider-item">
+                    <img src="https://media.istockphoto.com/id/1279259535/photo/male-repair-air-conditioner-at-room-he-is-air-technician-mechanic-engineer-maintenance-air.jpg?s=612x612&w=0&k=20&c=gdzBCQUgoRP5cRVnJrsHzNR12n7Ta04pW4adItm5u8Y=" alt="AC Repair & Service">
+                    <p>AC Repair & Service</p>
+                </div>
+                <div class="slider-item">
+                    <img src="https://t3.ftcdn.net/jpg/01/98/65/94/360_F_198659488_BT7evs4AEwey5wqrllvQTZYGezk4YaCZ.jpg" alt="Washing Machine Repair">
+                    <p>Washing Machine Repair</p>
+                </div>
+                <div class="slider-item">
+                    <img src="https://5.imimg.com/data5/SELLER/Default/2023/8/338106449/WS/QJ/WL/143797396/geyser-repairing-services-500x500.png" alt="Geyser Repair & Service">
+                    <p>Geyser Repair & Service</p>
+                </div>
+                <div class="slider-item">
+                    <img src="https://5.imimg.com/data5/SELLER/Default/2023/7/328314794/BB/ZZ/WU/5750967/water-purifier-repair-service.jpg" alt="Water Purifier Repair & Service">
+                    <p>Water Purifier Repair & Service</p>
+                </div>
+                <div class="slider-item">
+                    <img src="https://img.freepik.com/premium-photo/professional-repair-engineer-repairing-broken-tv_656932-3197.jpg?semt=ais_hybrid" alt="Television Repair">
+                    <p>Television Repair</p>
+                </div>
+                <div class="slider-item">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQG6cmOeJ5BfEOwRIpeM0pGhmPj6G7jus4fIQ&s" alt="Extra Repair 1">
+                    <p>Microwave Repair</p>
+                </div>
+                <div class="slider-item">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTz4mnqgAn2FCbNZA_lqZ9Rs3orIuf3eVxF_Q&s" alt="Extra Repair 2">
+                    <p>Electric Chimney Repair</p>
+                </div>
+            </div>
+            <button class="slider-button right" onclick="nextSlide()">›</button>
+        </div>
+    </section>
+
+    <section id="quick-repair-section">
+        <h2>Quick Repairs</h2>
+        <div class="quick-repair-container">
+            <button class="quick-repair-button left" onclick="prevQuickRepair()">‹</button>
+            <div class="quick-repair-wrapper" id="quick-repair">
+                <div class="quick-repair-item">
+                    <img src="./project_images/PlumberMan.jpeg" alt="Plumber Visit">
+                    <p>Plumber Visit</p>
+                    <p class="rating">★ 4.5</p>
+                    <p class="cost">₹ 50</p>
+                </div>
+                <div class="quick-repair-item">
+                    <img src="https://img.freepik.com/premium-photo/male-hands-with-socket-tester-white-background_392895-375494.jpg?w=900" alt="Switch Repair">
+                    <p>Switch Repair</p>
+                    <p class="rating">★ 4.0</p>
+                    <p class="cost">₹ 40</p>  
+                </div>
+                <div class="quick-repair-item">
+                    <img src="https://img.freepik.com/free-photo/portrait-person-doing-arts-crafts_23-2151575723.jpg?t=st=1730111517~exp=1730115117~hmac=6d0476f4c1a485cd46eac786e88ef46dfa59453d0996b0e9e5ca89e9b8da73aa&w=996" alt="Geyser Repair & Service">
+                    <p>Drill for Wall Decor</p>
+                    <p class="rating">★ 4.7</p>
+                    <p class="cost">₹ 50</p>
+                </div>
+                <div class="quick-repair-item">
+                    <img src="./project_images/carpenter_man_1.jpg" alt="Water Purifier Repair & Service">
+                    <p>Carpenter Visit</p>
+                    <p class="rating">★ 4.3</p>
+                    <p class="cost">₹ 60</p>
+                </div>
+                <div class="quick-repair-item">
+                    <img src="https://img.freepik.com/premium-photo/smiling-young-handsome-male-electrician-stand-up-arm-cross_1221994-24744.jpg?w=1060" alt="Television Repair">
+                    <p>Electrician Visit</p>
+                    <p class="rating">★ 4.6</p>
+                    <p class="cost">₹ 50</p>
+                </div>
+                <div class="quick-repair-item">
+                    <img src="https://img.freepik.com/free-photo/hand-with-glove-disinfecting-faucet_23-2148705050.jpg?t=st=1730111409~exp=1730115009~hmac=786ef243e5d9982161b8cb598ddd5954297dbaea7361c231b7bac681dab6b5c7&w=996" alt="Microwave Repair">
+                    <p>Tap Repair</p>
+                    <p class="rating">★ 4.2</p>
+                    <p class="cost">₹ 80</p>
+                </div>
+                <div class="quick-repair-item">
+                    <img src="https://img.freepik.com/premium-photo/person-is-using-orange-black-electric-wires_982337-3022.jpg?w=740" alt="Electric Chimney Repair">
+                    <p>Switch Board Repair</p>
+                    <p class="rating">★ 4.4</p>
+                    <p class="cost">₹ 100</p>
+                </div>
+                <div class="quick-repair-item">
+                    <img src="https://www.shutterstock.com/image-illustration/realistic-3d-render-close-blank-600nw-2225524663.jpg" alt="Electric Chimney Repair">
+                    <p>Tap Installation/Replacement</p>
+                    <p class="rating">★ 4.4</p>
+                    <p class="cost">₹ 100</p>
+                </div>
+                <div class="quick-repair-item">
+                    <img src="https://cdn-idddf.nitrocdn.com/tRoeMwftJOobFbCVQwHGlkDIXJOaliDg/assets/images/optimized/rev-b4d6d88/www.acmeplumbing.com/wp-content/uploads/2022/01/8-natural-drain-clog-removers-1024x683.jpg" alt="Sink Unclogging">
+                    <p>Sink Unclogging</p>
+                    <p class="rating">★ 4.6</p>
+                    <p class="cost">₹ 70</p>
+                </div>
+                
+                <div class="quick-repair-item">
+                    <img src="https://img.freepik.com/premium-photo/technician-service-using-brush-cleaning-air-conditioner_35076-3608.jpg" alt="AC Filter Cleaning">
+                    <p>AC Filter Cleaning</p>
+                    <p class="rating">★ 4.7</p>
+                    <p class="cost">₹ 150</p>
+                </div>
+                
+                <div class="quick-repair-item">
+                    <img src="https://static.cms.yp.ca/ecms/media/1/iStock_000042127984_Medium-1427730842-600x360.jpg" alt="Door Lock Repair">
+                    <p>Door Lock Repair</p>
+                    <p class="rating">★ 4.3</p>
+                    <p class="cost">₹ 70</p>
+                </div>
+                
+                <div class="quick-repair-item">
+                    <img src="https://thumbs.dreamstime.com/b/water-purification-filter-install-water-purification-filter-install-maintenance-service-253537514.jpg" alt="Water Purifier Maintenance">
+                    <p>Water Purifier Maintenance</p>
+                    <p class="rating">★ 4.7</p>
+                    <p class="cost">₹ 120</p>
+                </div>
+                
+            </div>
+            <button class="quick-repair-button right" onclick="nextQuickRepair()">›</button>
+        </div>
+    </section>
+    <section id="more-details">
+    <h2>More Details about our Electric Services</h2>
+    <div class="service-section">
+        <div class="service-item">
+            <h3>AC Repair & Service</h3>
+            <div class="service-types">
+                <div>Installation</div>
+                <div>Uninstallation</div>
+                <div>Gas Refilling</div>
+                <div>Thermostat Repair</div>
+                <div>Compressor Replacement</div>
+            </div>
+        </div>
+    
+        <div class="service-item">
+            <h3>Washing Machine Repair</h3>
+            <div class="service-types">
+                <div>Installation</div>
+                <div>Uninstallation</div>
+                <div>Drum Repair</div>
+                <div>Water Pump Repair</div>
+                <div>Motor Replacement</div>
+            </div>
+        </div>
+    
+        <div class="service-item">
+            <h3>Geyser Repair & Service</h3>
+            <div class="service-types">
+                <div>Installation</div>
+                <div>Uninstallation</div>
+                <div>Thermostat Replacement</div>
+                <div>Heating Element Replacement</div>
+                <div>Leak Repair</div>
+            </div>
+        </div>
+    
+        <div class="service-item">
+            <h3>Water Purifier Repair</h3>
+            <div class="service-types">
+                <div>Installation</div>
+                <div>Uninstallation</div>
+                <div>Filter Replacement</div>
+                <div>Water Quality Testing</div>
+                <div>Membrane Replacement</div>
+            </div>
+        </div>
+    
+        <!-- Television Repair -->
+        <div class="service-item">
+            <h3>Television Repair</h3>
+            <div class="service-types">
+                <div>Installation</div>
+                <div>Uninstallation</div>
+                <div>Screen Replacement</div>
+                <div>Power Supply Repair</div>
+                <div>Speaker Replacement</div>
+            </div>
+        </div>
+    
+        <!-- Microwave Repair -->
+        <div class="service-item">
+            <h3>Microwave Repair</h3>
+            <div class="service-types">
+                <div>Installation</div>
+                <div>Uninstallation</div>
+                <div>Magnetron Replacement</div>
+                <div>Turntable Repair</div>
+                <div>Door Switch Replacement</div>
+            </div>
+        </div>
+    
+        <!-- Electric Chimney Repair -->
+        <div class="service-item">
+            <h3>Electric Chimney Repair</h3>
+            <div class="service-types">
+                <div>Installation</div>
+                <div>Uninstallation</div>
+                <div>Filter Cleaning</div>
+                <div>Motor Replacement</div>
+                <div>Noise Reduction</div>
+            </div>
+        </div>
+    </div>
+</section>
+<footer>
+    <div class="footer-container">
+        <div class="footer-logo">
+            <img src="./project_images/logo.png" alt="Smart Service Logo">
+            <span>Smart Service</span>
+        </div>
+        
+        <div class="footer-links">
+            <div class="footer-column">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="aboutus.html">About us</a></li>
+                    <li><a href="terms.html">Terms & conditions</a></li>
+                    <li><a href="privacypolicy.html">Privacy policy</a></li>
+                    <li><a href="impact.html">Smart Service impact</a></li>
+                    <li><a href="careers.html">Careers</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>For customers</h4>
+                <ul>
+                    <li><a href="seereviews.jsp">Customer reviews</a></li>
+                    <li><a href="#available_services">Categories near you</a></li>
+                    <li><a href="fnadq.html">F & Q</a></li>
+                    <li><a href="contactus.html">Contact us</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>For partners</h4>
+                <ul>
+                    <li><a href="registerprof.html">Register as a professional</a></li>
+                     <li><a href="p_privacypolicy.html">Privacy policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Social Links</h4>
+                <div class="social-icons">
+                      <a href="https://x.com/Smart_ServiceX"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.facebook.com/"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/smartserviceig/"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>&copy; Copyright 2024 Smart Service. All rights reserved.</p>
+    </div>
+</footer>
+<script>
+    let currentQuickRepairIndex = 0;
+    const quickRepairsToShow = 3;
+    let currentIndex = 0;
+    const itemsToShow = 3;
+    let slider, quickRepair;
+    let totalItems;
+
+    document.addEventListener("DOMContentLoaded", function() {
+        slider = document.getElementById("slider");
+        quickRepair = document.getElementById("quick-repair");
+        
+        if (slider && quickRepair) {
+            totalItems = slider.children.length;
+
+            console.log("Slider Element:", slider);
+            console.log("QuickRepair Element:", quickRepair);
+            console.log("Total Items in Slider:", totalItems);
+
+            updateSlider();
+            updateQuickRepair();
+
+            window.addEventListener("resize", updateSlider);
+            window.addEventListener("resize", updateQuickRepair);
+        } else {
+            console.error("Slider or Quick Repair element not found");
+        }
+    });
+
+    function updateSlider() {
+        if (slider.children.length > 0) {
+            const itemWidth = slider.children[0].offsetWidth;
+            slider.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+            console.log("Updated Slider", currentIndex, itemWidth);
+        }
+    }
+
+    function prevSlide() {
+        if (currentIndex > 0) {
+            currentIndex--;
+            updateSlider();
+        }
+    }
+
+    function nextSlide() {
+        if (currentIndex < totalItems - itemsToShow) {
+            currentIndex++;
+            updateSlider();
+        }
+    }
+
+    function updateQuickRepair() {
+        if (quickRepair.children.length > 0) {
+            const quickRepairWidth = quickRepair.children[0].offsetWidth;
+            quickRepair.style.transform = `translateX(-${currentQuickRepairIndex * quickRepairWidth}px)`;
+            console.log("Updated Quick Repair", currentQuickRepairIndex, quickRepairWidth);
+        }
+    }
+
+    function prevQuickRepair() {
+        if (currentQuickRepairIndex > 0) {
+            currentQuickRepairIndex--;
+            updateQuickRepair();
+        }
+    }
+
+    function nextQuickRepair() {
+        if (currentQuickRepairIndex < quickRepair.children.length - quickRepairsToShow) {
+            currentQuickRepairIndex++;
+            updateQuickRepair();
+        }
+    }
+    
+    const urlParams = new URLSearchParams(window.location.search);
+    const username = urlParams.get('username');
+    if (username) {
+        document.getElementById("usernameField").value = username;
+
+        const newUrl = window.location.origin + window.location.pathname;
+        window.history.replaceState({}, document.title, newUrl);
+    }
+</script>
+
+</body>
+</html>
+    

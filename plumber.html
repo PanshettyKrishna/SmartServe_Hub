@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+      <link rel="icon" href="./project_images/favicon2.ico" type="image/x-icon">
+    <link rel="icon" href="./project_images/favicon2.png" type="image/png">
+    <link rel="shortcut icon" href="./project_images/favicon2.ico" type="image/x-icon">
+    <title>Smart Service</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            overflow-x:hidden;
+        }
+        nav {
+            background-color: #f5f5f5;
+            border-bottom: 1px solid #eaeaea;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 60px;
+        }
+
+        .nav-left span {
+            font-size: 35px;
+            font-weight: bold;
+            color: #000;
+        }
+
+        .nav-right a {
+            margin-right: 30px;
+            font-size: 25px;
+            color: #000;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-right a {
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+}
+.nav-right a {
+    transition: all 0.4s ease;
+    position: relative;
+    padding: 5px 10px;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.nav-right a:nth-child(1)::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #000;
+    bottom: 0;
+    left: -100%;
+    transition: 0.4s;
+}
+
+.nav-right a:nth-child(1):hover::before {
+    left: 0;
+}
+
+.nav-right a:nth-child(2) {
+    position: relative;
+    z-index: 1;
+}
+
+.nav-right a:nth-child(2)::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background-color: #000;
+    transition: all 0.6s ease;
+    transform: translate(-50%, -50%) scale(0);
+    border-radius: 50%;
+    z-index: -1;
+}
+
+.nav-right a:nth-child(2):hover::before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.nav-right a:nth-child(2):hover {
+    color: #fff;
+}
+        .slider-container {
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .slider-wrapper {
+            display: flex;
+            transition: transform 0.5s ease;
+            width: max-content; /* Allows the slider to grow with content */
+        }
+        .slider-item {
+            flex: 0 0 auto;
+            text-align: center;
+            padding: 10px;
+            width: 350px;
+            height:400px;
+            box-sizing: border-box;
+        }
+        .slider-item img {
+            width: 100%;
+            height: 270px; 
+            border-radius: 8px;
+        }
+        h2 {
+    font-size: 40px;
+    margin-left: 180px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+h2::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: #000;
+    margin-top: 8px;
+    margin-right: 80px;
+}
+        .slider-item p {
+            font-size: 25px;
+            margin: 12px 0 0 0;
+
+        }
+        .slider-button {
+            font-size: 50px;
+            cursor: pointer;
+            background-color: #fff;
+            border: none;
+            color: #000;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
+            padding: 0 10px;
+        }
+        .slider-button.left {
+            left: 0;
+        }
+        .slider-button.right {
+            right: 0;
+        }
+
+        #quick-repairs{
+            margin-top: -40px;
+        }
+        .quick-repair-container {
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .quick-repair-wrapper {
+            display: flex;
+            transition: transform 0.5s ease;
+            width: max-content;
+        }
+        .quick-repair-item {
+            flex: 0 0 auto;
+            text-align: center;
+            padding: 10px;
+            width: 300px;
+            height: 400px;
+            box-sizing: border-box;
+        }
+        .quick-repair-item img {
+            width: 100%;
+            height: 250px;
+            border-radius: 8px;
+        }
+        h2 {
+            font-size: 40px;
+            margin-left:180px;
+        }
+        .quick-repair-item p {
+            font-size: 24px;
+            margin-top: 20px;
+            text-align: start;
+        }
+        .quick-repair-button {
+            font-size: 50px;
+            cursor: pointer;
+            background-color: #fff;
+            border: none;
+            color: #000;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
+            padding: 0 10px;
+        }
+        .quick-repair-button.left {
+            left: 0;
+        }
+        .quick-repair-button.right {
+            right: 0;
+        }
+        .quick-repair-item p {
+    margin: 8px 0 0;
+}
+
+.quick-repair-item .rating {
+    font-size: 18px;
+    color: #36352f; 
+    margin-top: 8px;
+    text-align: left;
+}
+
+.quick-repair-item .cost {
+    font-size: 16px;
+    text-align: left;
+    color: #453f3f;
+    margin-top: 8px;
+}
+        #more-details{
+            margin-top: 80px;
+        }
+        #more-details  h2{
+            margin-left: 340px;
+        }
+        .service-section {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: space-between;
+        margin-left: 100px;
+    }
+    .service-item {
+        padding: 15px;
+        border-radius: 5px;
+        flex: 1 1 calc(33.33% - 50px);
+        box-sizing: border-box;
+    }
+    .service-item h3 {
+        font-size: 25px;
+        width: 100%;
+    }
+    .service-types div{
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+    .service-types div:hover{
+        color:#4b1327;
+        transform: scale(1.1,1.1);
+    }
+    footer {
+            background-color: #f5f5f5;
+            padding: 40px 0;
+            border-top: 1px solid #eaeaea;
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            margin-top: 100px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: auto;
+            text-align:left;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: start;
+            justify-content: start;
+            margin-bottom: 20px; 
+        }
+
+        .footer-logo img {
+            width: 100px;
+            margin-right: 30px;
+        }
+
+        .footer-logo span {
+            font-size: 35px;
+            font-weight: 700;
+            color: #000;
+            margin-top: 5px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: start;
+            flex-wrap: wrap; 
+            margin-bottom: 30px; 
+            border-bottom: 1px solid #eaeaea; 
+            padding-bottom: 20px; 
+        }
+
+        .footer-column {
+            flex: 1;
+            margin: 10px 20px;
+            min-width: 200px; 
+        }
+
+        .footer-column h4 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 15px; 
+        }
+
+        .footer-column ul li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        .footer-column ul li a:hover {
+            color: #000;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content:start;
+            gap: 20px;
+        }
+
+        .social-icons a {
+            font-size: 25px;
+            color: #333;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: #000;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            font-size: 15px;
+            color: #000;
+            margin-top: 20px; 
+        }
+
+        .footer-bottom p {
+            margin-bottom: 5px;
+        }
+
+        .footer-bottom small {
+            color: #999;
+        }
+
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-left">
+            <span>Smart Service</span>
+        </div>
+        <div class="nav-right">
+            <a href="bookservice.html">Book Service</a>
+            <a href="signup.html">Contact Us</a>
+        </div>
+    </nav>
+    <section>
+        <h2>Plumber service-types</h2>
+        <div class="slider-container">
+            <button class="slider-button left" onclick="prevSlide()">‹</button>
+            <div class="slider-wrapper" id="slider">
+                <div class="slider-item">
+                    <img src="https://5.imimg.com/data5/ZR/LS/BG/SELLER-58227905/tagve-wash-basin-faucet-wash-basin-360-rotation-hot-cold-mixer-tap-stainless-steel-tap-500x500.jpg" alt="AC Repair & Service">
+                    <p>Tap & Mixer</p>
+                </div>
+                <div class="slider-item">
+                    <img src="https://eu-images.contentstack.com/v3/assets/blt9ca8222b5acaa556/blt045ec2e32c180b69/6539fb2d0da804479debbc79/how-to-clean-a-toilet-seat.jpeg?width=954&height=637&format=jpg&quality=80" alt="Washing Machine Repair">
+                    <p>Toilet</p>
+                </div>
+                <div class="slider-item">
+                    <img src="https://stoutsanitaryware.com/wp-content/uploads/2021/01/Image2-2.jpg" alt="Geyser Repair & Service">
+                    <p>Bath Fittings</p>
+                </div>
+                <div class="slider-item">
+                    <img src="https://wgassets.duravit.com/photomanager-duravit/file/8a8a818d8017c1c2018018856e59022c/washing_luv_2.jpg?derivate=width~1920" alt="Water Purifier Repair & Service">
+                    <p>Basin Sink</p>
+                </div>
+                <div class="slider-item">
+                    <img src="https://m.media-amazon.com/images/I/41oPywce-JL._SX679_.jpg" alt="Television Repair">
+                    <p>Drainage</p>
+                </div>
+                <div class="slider-item">
+                    <img src="https://tse1.mm.bing.net/th?id=OIP.vlnWqHb6Q5B_NZ5TFCCSggHaFZ&pid=Api&P=0&h=180" alt="Extra Repair 1">
+                    <p>Water pipes</p>
+                </div>
+                <div class="slider-item">
+                    <img src="https://5.imimg.com/data5/SELLER/Default/2020/9/SJ/SA/WP/72049411/ocean-white-4-layered-tanks-500x500.JPG" alt="Extra Repair 2">
+                    <p>Water Tank</p>
+                </div>
+                <div class="slider-item">
+                    <img src="https://images.meesho.com/images/products/392017391/xfoti_512.webp" alt="Extra Repair 2">
+                    <p>Grounting</p>
+                </div>
+                <div class="slider-item">
+                    <img src="https://www.tmscomfort.com/wp-content/uploads/2020/11/Garbage-Disposal-Replacement-Connecticut-1200x675.jpg" alt="Extra Repair 2">
+                    <p>Garbage Disposal Repair</p>
+                </div>
+            </div>
+            <button class="slider-button right" onclick="nextSlide()">›</button>
+        </div>
+    </section>
+    <section id="quick-repair-section">
+        <h2>Quick Repairs</h2>
+        <div class="quick-repair-container">
+            <button class="quick-repair-button left" onclick="prevQuickRepair()">‹</button>
+            <div class="quick-repair-wrapper" id="quick-repair">
+                <div class="quick-repair-item">
+                    <img src="./project_images/PlumberMan.jpeg" alt="Plumber Visit">
+                    <p>Plumber Visit</p>
+                    <p class="rating">★ 4.5</p>
+                    <p class="cost">₹ 50</p>
+                </div>
+                <div class="quick-repair-item">
+                    <img src="https://img.freepik.com/premium-photo/male-hands-with-socket-tester-white-background_392895-375494.jpg?w=900" alt="Switch Repair">
+                    <p>Switch Repair</p>
+                    <p class="rating">★ 4.0</p>
+                    <p class="cost">₹ 40</p>  
+                </div>
+                <div class="quick-repair-item">
+                    <img src="https://img.freepik.com/free-photo/portrait-person-doing-arts-crafts_23-2151575723.jpg?t=st=1730111517~exp=1730115117~hmac=6d0476f4c1a485cd46eac786e88ef46dfa59453d0996b0e9e5ca89e9b8da73aa&w=996" alt="Geyser Repair & Service">
+                    <p>Drill for Wall Decor</p>
+                    <p class="rating">★ 4.7</p>
+                    <p class="cost">₹ 50</p>
+                </div>
+                <div class="quick-repair-item">
+                    <img src="./project_images/carpenter_man_1.jpg" alt="Water Purifier Repair & Service">
+                    <p>Carpenter Visit</p>
+                    <p class="rating">★ 4.3</p>
+                    <p class="cost">₹ 60</p>
+                </div>
+                <div class="quick-repair-item">
+                    <img src="https://img.freepik.com/premium-photo/smiling-young-handsome-male-electrician-stand-up-arm-cross_1221994-24744.jpg?w=1060" alt="Television Repair">
+                    <p>Electrician Visit</p>
+                    <p class="rating">★ 4.6</p>
+                    <p class="cost">₹ 50</p>
+                </div>
+                <div class="quick-repair-item">
+                    <img src="https://img.freepik.com/free-photo/hand-with-glove-disinfecting-faucet_23-2148705050.jpg?t=st=1730111409~exp=1730115009~hmac=786ef243e5d9982161b8cb598ddd5954297dbaea7361c231b7bac681dab6b5c7&w=996" alt="Microwave Repair">
+                    <p>Tap Repair</p>
+                    <p class="rating">★ 4.2</p>
+                    <p class="cost">₹ 80</p>
+                </div>
+                <div class="quick-repair-item">
+                    <img src="https://img.freepik.com/premium-photo/person-is-using-orange-black-electric-wires_982337-3022.jpg?w=740" alt="Electric Chimney Repair">
+                    <p>Switch Board Repair</p>
+                    <p class="rating">★ 4.4</p>
+                    <p class="cost">₹ 100</p>
+                </div>
+                <div class="quick-repair-item">
+                    <img src="https://www.shutterstock.com/image-illustration/realistic-3d-render-close-blank-600nw-2225524663.jpg" alt="Electric Chimney Repair">
+                    <p>Tap Installation/Replacement</p>
+                    <p class="rating">★ 4.4</p>
+                    <p class="cost">₹ 100</p>
+                </div>
+                <div class="quick-repair-item">
+                    <img src="https://cdn-idddf.nitrocdn.com/tRoeMwftJOobFbCVQwHGlkDIXJOaliDg/assets/images/optimized/rev-b4d6d88/www.acmeplumbing.com/wp-content/uploads/2022/01/8-natural-drain-clog-removers-1024x683.jpg" alt="Sink Unclogging">
+                    <p>Sink Unclogging</p>
+                    <p class="rating">★ 4.6</p>
+                    <p class="cost">₹ 70</p>
+                </div>
+                
+                <div class="quick-repair-item">
+                    <img src="https://img.freepik.com/premium-photo/technician-service-using-brush-cleaning-air-conditioner_35076-3608.jpg" alt="AC Filter Cleaning">
+                    <p>AC Filter Cleaning</p>
+                    <p class="rating">★ 4.7</p>
+                    <p class="cost">₹ 150</p>
+                </div>
+                
+                <div class="quick-repair-item">
+                    <img src="https://static.cms.yp.ca/ecms/media/1/iStock_000042127984_Medium-1427730842-600x360.jpg" alt="Door Lock Repair">
+                    <p>Door Lock Repair</p>
+                    <p class="rating">★ 4.3</p>
+                    <p class="cost">₹ 70</p>
+                </div>
+                
+                <div class="quick-repair-item">
+                    <img src="https://thumbs.dreamstime.com/b/water-purification-filter-install-water-purification-filter-install-maintenance-service-253537514.jpg" alt="Water Purifier Maintenance">
+                    <p>Water Purifier Maintenance</p>
+                    <p class="rating">★ 4.7</p>
+                    <p class="cost">₹ 120</p>
+                </div>
+                
+            </div>
+            <button class="quick-repair-button right" onclick="nextQuickRepair()">›</button>
+        </div>
+    </section>
+    <section id="more-details">
+        <h2>More Details about Our Plumbing Services</h2>
+        <div class="service-section">
+            
+            <div class="service-item">
+                <h3>Pipe Repair & Replacement</h3>
+                <div class="service-types">
+                    <div>Leak Repair</div>
+                    <div>Pipe Replacement</div>
+                    <div>Pipe Insulation</div>
+                    <div>Joint Sealing</div>
+                    <div>Emergency Leak Control</div>
+                </div>
+            </div>
+            
+            <div class="service-item">
+                <h3>Drain Cleaning</h3>
+                <div class="service-types">
+                    <div>Clog Removal</div>
+                    <div>Hydro Jetting</div>
+                    <div>Drain Inspection</div>
+                    <div>Pipe Descaling</div>
+                    <div>Root Removal</div>
+                </div>
+            </div>
+            
+            <div class="service-item">
+                <h3>Backflow Prevention & Testing</h3>
+                <div class="service-types">
+                    <div>Backflow Testing</div>
+                    <div>Valve Installation</div>
+                    <div>Repair & Replacement</div>
+                    <div>Annual Inspection</div>
+                    <div>Emergency Shut-off</div>
+                </div>
+            </div>
+            
+            <div class="service-item">
+                <h3>Faucet & Tap Repair</h3>
+                <div class="service-types">
+                    <div>Leak Fixing</div>
+                    <div>Replacement</div>
+                    <div>New Faucet Installation</div>
+                    <div>Valve Repair</div>
+                    <div>Cartridge Replacement</div>
+                </div>
+            </div>
+            
+            <div class="service-item">
+                <h3>Toilet Repair</h3>
+                <div class="service-types">
+                    <div>Leak Repair</div>
+                    <div>Flush Valve Replacement</div>
+                    <div>Clog Clearing</div>
+                    <div>Toilet Seat Replacement</div>
+                    <div>Tank Repair</div>
+                </div>
+            </div>
+            
+            <div class="service-item">
+                <h3>Water Tank Cleaning</h3>
+                <div class="service-types">
+                    <div>Tank Scrubbing</div>
+                    <div>Disinfection</div>
+                    <div>Sediment Removal</div>
+                    <div>Inspection for Leaks</div>
+                    <div>Tank Reinstallation</div>
+                </div>
+            </div>
+            
+            <div class="service-item">
+                <h3>Sump Pump Installation & Repair</h3>
+                <div class="service-types">
+                    <div>New Installation</div>
+                    <div>Motor Replacement</div>
+                    <div>Float Switch Repair</div>
+                    <div>Battery Backup Installation</div>
+                    <div>Pump Cleaning</div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="./project_images/logo.png" alt="Smart Service Logo">
+                <span>Smart Service</span>
+            </div>
+            
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="aboutus.html">About us</a></li>
+                        <li><a href="terms.html">Terms & conditions</a></li>
+                        <li><a href="privacypolicy.html">Privacy policy</a></li>
+                        <li><a href="impact.html">Smart Service impact</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>For customers</h4>
+                    <ul>
+                        <li><a href="seereviews.jsp">Customer reviews</a></li>
+                        <li><a href="#available_services">Categories near you</a></li>
+                        <li><a href="fnadq.html">F & Q</a></li>
+                        <li><a href="contactus.html">Contact us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>For partners</h4>
+                    <ul>
+                        <li><a href="registerprof.html">Register as a professional</a></li>
+                         <li><a href="p_privacypolicy.html">Privacy policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Social Links</h4>
+                    <div class="social-icons">
+                    <a href="https://x.com/Smart_ServiceX"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.facebook.com/"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/smartserviceig/"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="footer-bottom">
+            <p>&copy; Copyright 2024 Smart Service. All rights reserved.</p>
+        </div>
+    </footer>
+    <script>
+        let currentIndex = 0;
+        const slider = document.getElementById("slider");
+        const itemsToShow = 3; // Number of items to show at once
+        const totalItems = slider.children.length;
+
+        function updateSlider() {
+            const itemWidth = slider.children[0].offsetWidth;
+            slider.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+        }
+
+        function prevSlide() {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateSlider();
+            }
+        }
+
+        function nextSlide() {
+            if (currentIndex < totalItems - itemsToShow) {
+                currentIndex++;
+                updateSlider();
+            }
+        }
+
+        window.addEventListener("resize", updateSlider);
+
+        let currentQuickRepairIndex = 0;
+        const quickRepair = document.getElementById("quick-repair");
+        const quickRepairsToShow = 3;
+
+        function updateQuickRepair() {
+            const quickRepairWidth = quickRepair.children[0].offsetWidth;
+            quickRepair.style.transform = `translateX(-${currentQuickRepairIndex * quickRepairWidth}px)`;
+        }
+
+        function prevQuickRepair() {
+            if (currentQuickRepairIndex > 0) {
+                currentQuickRepairIndex--;
+                updateQuickRepair();
+            }
+        }
+
+        function nextQuickRepair() {
+            if (currentQuickRepairIndex < quickRepair.children.length - quickRepairsToShow) {
+                currentQuickRepairIndex++;
+                updateQuickRepair();
+            }
+        }
+
+        window.addEventListener("resize", updateQuickRepair);
+    </script>
+</body>
+</html>
+    

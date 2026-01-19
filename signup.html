@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Smart Service</title>
+    <link rel="stylesheet" href="signup.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+      <link rel="icon" href="./project_images/favicon2.ico" type="image/x-icon">
+    <link rel="icon" href="./project_images/favicon2.png" type="image/png">
+    <link rel="shortcut icon" href="./project_images/favicon2.ico" type="image/x-icon">
+    <style>
+        @charset "UTF-8";
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #ffffff; 
+            display: flex;
+            height: 100vh;
+            color: #333; 
+        }
+
+        .image-container {
+            flex: 40%;
+            background-image: url("./project_images/who-we-are.png");
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .form-container {
+            flex: 60%;
+            background-color: #ffffff;
+            border: 1px solid #d1d9e6; 
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+            padding: 15px;
+            margin: auto;
+            max-width: 600px;
+            margin-right: 100px;
+        }
+
+        fieldset {
+            border: none;
+        }
+
+        legend {
+            font-size: 28px;
+            font-weight: bold;
+            color: #333; 
+            text-align: center;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #333; 
+        }
+
+        table {
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        label {
+            color: #333;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        input[type="text"], input[type="email"], input[type="password"] {
+            width: 100%;
+            padding: 6px;
+            margin: 4px 0;
+            border: 1px solid #ccd4e0;
+            border-radius: 4px;
+            font-size: 16px;
+            box-sizing: border-box;
+            background-color: #f5f5f5; 
+        }
+
+        button.submit-btn {
+            background-color: #333; 
+            color: #ffffff;
+            padding: 8px;
+            width: 160px;
+            border: none;
+            border-radius: 4px;
+            font-size: 18px;
+            margin-top:10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-left: 180px;
+        }
+
+        button.submit-btn:hover {
+            background-color: #555; 
+        }
+             
+        button i{
+        font-size:18px;
+        }
+        a {
+            color: #333; 
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline; 
+        }
+
+        td {
+            padding: 6px 0;
+        }
+
+        .register-info {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .register-info a {
+            font-size: 22px;
+            margin-left: 10px;
+        }
+
+        .register-info span {
+            margin-top: 5px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="image-container">
+        <!-- Optional: You can add content here if needed -->
+    </div>
+    <div class="form-container">
+        <form action="signup.jsp" method="post">
+            <fieldset>
+                <legend>Welcome to Smart Service! Sign Up</legend>
+                <table>
+                    <tr>
+                        <td><label for="idn">User Name:</label></td>
+                        <td><input type="text" id="idn" name="idn" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="fn">First Name:</label></td>
+                        <td><input type="text" id="fn" name="fn" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="ln">Last Name:</label></td>
+                        <td><input type="text" id="ln" name="ln" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="em">Email:</label></td>
+                        <td><input type="email" id="em" name="em" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="pwd">Password:</label></td>
+                          <td>
+        <div style="position: relative; width: 100%;">
+            <input type="password" id="pwd" name="pwd" required style="width: 100%; padding-right: 30px;">
+            <button type="button" onclick="togglePasswordVisibility()" style="position: absolute; right: 8px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer;">
+                <i class="fa fa-eye-slash" aria-hidden="true"></i>
+            </button>
+        </div>
+    </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <button class="submit-btn">Submit</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <div class="register-info">
+                                <span>Already Registered?</span>
+                                <a href="login.html">Log In</a>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+        </form>
+    </div>
+     <script>
+        function togglePasswordVisibility() {
+            const passwordField = document.getElementById("pwd");
+            const toggleIcon = document.querySelector("button i");
+
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+                toggleIcon.classList.remove("fa-eye-slash");
+                toggleIcon.classList.add("fa-eye");
+            } else {
+                passwordField.type = "password";
+                toggleIcon.classList.remove("fa-eye");
+                toggleIcon.classList.add("fa-eye-slash");
+            }
+        }
+    </script>
+</body>
+
+</html>

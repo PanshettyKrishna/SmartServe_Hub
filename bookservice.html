@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Smart Service</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+      <link rel="icon" href="./project_images/favicon2.ico" type="image/x-icon">
+    <link rel="icon" href="./project_images/favicon2.png" type="image/png">
+    <link rel="shortcut icon" href="./project_images/favicon2.ico" type="image/x-icon">
+  <style>
+        body {
+            margin-left: 0px;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            height: 150vh;
+            overflow-x: hidden;
+        }
+        nav {
+         height: 70px;
+            background-color: #f5f5f5;
+            border-bottom: 1px solid #eaeaea;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+           
+        }
+
+        .nav-left span {
+            font-size: 35px;
+            font-weight: bold;
+            color: #000;
+        }
+        .nav-right{
+        display:flex;
+        }
+          .nav-right button{
+              border:none;
+          }
+        .nav-right a,button {
+            margin-right: 30px;
+            font-size: 28px;
+            color: #000;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-right a,button {
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+}
+.nav-right a,button {
+    transition: all 0.4s ease;
+    position: relative;
+    padding: 5px 10px;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.nav-right a:nth-child(1)::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #000;
+    bottom: 0;
+    left: -100%;
+    transition: 0.4s;
+}
+
+.nav-right a:nth-child(1):hover::before {
+    left: 0;
+}
+
+.nav-right button:nth-child(2) {
+    position: relative;
+    z-index: 1;
+}
+
+.nav-right button:nth-child(2)::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background-color: #000;
+    transition: all 0.6s ease;
+    transform: translate(-50%, -50%) scale(0);
+    border-radius: 50%;
+    z-index: -1;
+}
+
+.nav-right button:nth-child(2):hover::before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.nav-right button:nth-child(2):hover {
+    color: #fff;
+}       
+
+        .nav-right a:nth-child(3) {
+    position: relative;
+    z-index: 1;
+}
+
+.nav-right a:nth-child(3)::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background-color: #000;
+    transition: all 0.6s ease;
+    transform: translate(-50%, -50%) scale(0);
+    border-radius: 50%;
+    z-index: -1;
+}
+
+.nav-right a:nth-child(3):hover::before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.nav-right a:nth-child(3):hover {
+    color: #fff;
+}
+        .main-content {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            padding: 40px;
+        }
+        .form-container {
+            width: 60%;
+            padding: 20px;
+            background-color: #ffffff;
+        }
+        h1 {
+            margin-top: -20px;
+            font-size: 40px;
+            font-weight: bold;
+            margin-bottom: 30px;
+            color: #000000;
+        }
+        label {
+            font-size: 16px;
+            margin-bottom: 10px;
+            color: #000000;
+            display: block;
+        }
+        input[type="text"], input[type="email"], input[type="datetime-local"], input[type="password"], select, textarea {
+            width: 80%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        input[type="datetime-local"]{
+          margin-bottom: 20px;
+        }
+        select {
+            cursor: pointer;
+            appearance: none;
+            background-color: #fff;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath fill='gray' d='M7 10l5 5 5-5H7z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+        }
+        .error-message {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            display: block;
+        }
+        #submitBtn{
+            background-color: #444;
+            color: #ffffff;
+            border: none;
+            padding: 12px 24px;
+            font-size: 20px;
+            font-weight: 600;
+            border-radius: 20px;
+            cursor: pointer;
+            width: 200px;
+            height: 50px;
+            display: block;
+            margin-top: 40px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        #submitBtn:hover {
+            background-color: #4500b5;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+            transform: translateY(-2px) scale(1.05);
+        }
+        .button-group{
+            display: flex;
+        }
+        .button-group  button{
+            margin-right: 40px;
+            background-color: #444;
+            color: #ffffff;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            width: 180px;
+            height: 50px;
+            display: block;
+            margin-top: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        .button-group button:hover {
+            background-color: #000;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+            transform: translateY(-2px) scale(1.05);
+        }
+        button:active {
+            background-color: #3a009b;
+            transform: translateY(1px) scale(1);
+        }
+        .image-container {
+            width: 70%;
+            background-image: url("./project_images/User-flow-pana.png");
+            background-size: cover;
+            background-position: center;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            width: 350px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-content h2 {
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        .modal-content button i {
+    margin-right: 10px;
+    font-size: 18px;
+    vertical-align: middle;
+}
+        .modal-content button {
+            background-color: #5cacee;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .modal-content button:hover {
+            background-color: #007acc;
+        }
+
+        #addLocationBtn:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        #addLocationBtn i{
+            margin-right: 8px;
+            font-size: 18px;
+        }
+  #addToCart i {
+    margin-right: 8px;
+    font-size: 18px; 
+}
+
+.alert-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.alert-content {
+    background-color: #fff;
+    padding: 20px 30px;
+    border-radius: 10px;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.alert-content h2 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.alert-content .error-icon {
+    color: red;
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.alert-content button {
+    background-color: #5cacee;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-left">
+            <span>Smart Service</span>
+        </div>
+        <div class="nav-right">
+            <a href="cart.jsp">Your Cart</a>
+             <form action="bookedservices.jsp">  
+               <input type="hidden" name="username1" id="usernameField1">    
+              <button type="submit">See Booked Services</button>
+              </form> 
+            <a href="contactus.html">Contact Us</a>
+        </div>
+    </nav>
+<div class="main-content">
+
+    <div id="locationModal" class="modal">
+        <div class="modal-content">
+            <h2>Select Location</h2>
+            <button onclick="useCurrentLocation()"> 
+                <i class="fa-solid fa-location-crosshairs"></i>Use Your Current Location</button>
+            <button onclick="selectOnGoogleMaps()">  <i class="fas fa-map-marker-alt"></i>Select on Google Maps</button>
+            <p id="locationStatus"></p>
+        </div>
+    </div>
+    <div id="errorAlert" class="alert-modal error-modal">
+    <div class="alert-content">
+        <i class="fas fa-times-circle error-icon"></i>
+        <h2 id="h2">Please fill out all required fields.</h2>
+        <button onclick="closeErrorAlert()">OK</button>
+    </div>
+</div>
+    <div class="form-container">
+        <h1>Book Service</h1>
+        <form action="bookservice.jsp" method="post" id="serviceForm">
+
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" required>
+            
+             <input type="hidden" name="username" id="usernameField">    
+
+            <input type="hidden" id="locationStatusField" name="locationAdded" value="false">
+            
+            <label for="mobile">Mobile Number:</label>
+            <input type="text" id="mobile" name="mobile" placeholder="+91 Phone Number" required oninput="validateMobileNumber()">
+            <span id="mobileError" class="error-message"></span>
+
+            <label for="datetime">Date & Time:</label>
+            <input type="datetime-local" id="datetime" name="datetime" required onchange="validateDateTime()">
+            <span id="datetimeError" class="error-message"></span>
+
+            <label for="gender">Payment Options:</label>
+            <select id="gender" name="gender" required>
+                <option value="Credit Card">Credit Card</option>
+                <option value="Debit Card">Debit Card</option>
+                <option value="UPI">UPI</option>
+                <option value="Cash">Cash</option>
+            </select>
+
+            <label for="pagetitle">Service Title:</label>
+            <input type="text" id="pagetitle" name="pagetitle" required>
+
+            <label for="expertise">Service in Detail:</label>
+            <textarea id="expertise" name="expertise" placeholder="Describe your service" required></textarea>
+
+            <div class="button-group">
+                <button type="button" id="addLocationBtn" onclick="openModal()"> <i class="fas fa-map-marker-alt"></i> Add Location</button>
+                <button type="button" id="addToCart" onclick="checkForm()">  <i class="fas fa-shopping-cart"></i>Add to Cart</button>
+                
+            </div>
+
+            <button id="submitBtn">Book Service</button>
+        </form>
+    </div>
+    <div class="image-container"></div>
+</div>
+   
+
+<script>
+    function validateMobileNumber() {
+        const mobileInput = document.getElementById('mobile');
+        const errorMessage = document.getElementById('mobileError');
+        const submitBtn = document.getElementById('submitBtn'); 
+
+        if (mobileInput.value.length !== 10 || isNaN(mobileInput.value)) {
+            errorMessage.textContent = "Enter a valid 10-digit mobile number";
+            mobileInput.style.borderColor = "red";
+            submitBtn.disabled = true; 
+        } else {
+            errorMessage.textContent = "";
+            mobileInput.style.borderColor = "";
+            submitBtn.disabled = false; 
+        }
+    }
+    function validateDateTime() {
+        const datetimeInput = document.getElementById('datetime');
+        const errorMessage = document.getElementById('datetimeError');
+        const selectedDate = new Date(datetimeInput.value);
+        const currentDate = new Date();
+        
+        currentDate.setMinutes(currentDate.getMinutes()+30);
+
+        if (selectedDate < currentDate) {
+            errorMessage.textContent = "Please select a date and time at least 30 minutes from now";
+            datetimeInput.style.borderColor = "red";
+            datetimeInput.value = ""; 
+        } else {
+            errorMessage.textContent = "";
+            datetimeInput.style.borderColor = "";
+        }
+    }
+    function openModal() {
+            document.getElementById("locationModal").style.display = "flex";
+        }
+
+        function closeModal() {
+            document.getElementById("locationModal").style.display = "none";
+        }
+
+
+        function useCurrentLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        const latitude = position.coords.latitude;
+                        const longitude = position.coords.longitude;
+                        document.getElementById("locationStatus").textContent = `Location: ${latitude.toFixed(4)}, ${longitude.toFixed(4)}`;
+                        document.getElementById("addLocationBtn").textContent = "Location Added";
+                        document.getElementById("addLocationBtn").disabled = true;
+                        document.getElementById("locationStatusField").value = "true"; 
+                        closeModal();
+                    },
+                    (error) => {
+                        document.getElementById("locationStatus").textContent = "Error fetching location.";
+                    }
+                );
+            } else {
+                document.getElementById("locationStatus").textContent = "Geolocation is not supported by this browser.";
+            }
+        }
+
+        function selectOnGoogleMaps() {
+            window.open("https://maps.google.com", "_blank");
+            
+            // Assume user selects location manually
+            document.getElementById("locationStatus").textContent = "Location selected from Google Maps";
+            document.getElementById("addLocationBtn").textContent = "Location Added";
+            document.getElementById("addLocationBtn").disabled = true;
+            document.getElementById("locationStatusField").value = "true";
+            closeModal();
+        }
+        const form = document.getElementById('serviceForm');
+        const addToCartButton = document.getElementById('addToCart');
+        
+        function checkForm() {
+        	 const locationAdded = document.getElementById("addLocationBtn").disabled;
+        	    
+        	    if (!locationAdded) {
+        	        showErrorAlert(); // Show an alert if location is not added
+        	        document.getElementById("errorAlert").querySelector('h2').textContent = "Please add a location before submitting.";
+        	        return;
+        	    }
+            console.log("Username before submit:", document.getElementById("usernameField").value);
+            if (form.reportValidity()) {
+            	 form.action = "addtocart.jsp?username=" + encodeURIComponent(username);  
+                form.submit();
+            } else {
+                showErrorAlert(); 
+            }
+        }
+        
+    function showErrorAlert() {
+        document.getElementById('errorAlert').style.display = 'flex';
+        document.getElementById("h2").textContent = "Please fill out all required fields.";
+    }
+
+    function closeErrorAlert() {
+        document.getElementById('errorAlert').style.display = 'none';
+    }
+    
+    document.getElementById("serviceForm").addEventListener("submit", function(event) {
+        const locationAdded = document.getElementById("locationStatusField").value === "true";
+        
+        if (!locationAdded) {
+            event.preventDefault();
+            document.getElementById('errorAlert').style.display = 'flex';
+            document.getElementById("h2").textContent = "Please add a location before booking the service.";
+        }
+    });
+
+    
+    const urlParams = new URLSearchParams(window.location.search);
+    const username = urlParams.get('username');
+    console.log(username);
+    if (username) {
+        document.getElementById("usernameField").value = username;
+
+        const newUrl = window.location.origin + window.location.pathname;
+        window.history.replaceState({}, document.title, newUrl);
+    }
+    
+    
+    const urlParams1 = new URLSearchParams(window.location.search);
+    const username1 = urlParams.get('username1');
+    console.log(username1);
+    if (username1) {
+        document.getElementById("usernameField1").value = username1;
+
+        const newUrl = window.location.origin + window.location.pathname;
+        window.history.replaceState({}, document.title, newUrl);
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Smart Service</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+      <link rel="icon" href="./project_images/favicon2.ico" type="image/x-icon">
+    <link rel="icon" href="./project_images/favicon2.png" type="image/png">
+    <link rel="shortcut icon" href="./project_images/favicon2.ico" type="image/x-icon">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            height: 120vh;
+            overflow-x: hidden;
+        }
+        .navbar {
+            width: 100%;
+            background-color: #f5f5f5;
+            padding: 20px;
+            display: flex;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            height: 50px;
+        }
+        .navbar .brand {
+            font-size: 35px;
+            color: #000;
+            padding-top: 10px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            margin-left: 780px;
+            padding: 0;
+        }
+        .navbar ul li {
+            margin-left: 60px;
+        }
+        .navbar ul li a {
+            color: #000;
+            text-decoration: none;
+            font-size: 25px;
+        }
+        .navbar ul li a:hover {
+            color: #6200ea;
+            transform: scale(1.2, 1.2);
+        }
+        .main-content {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            padding: 40px;
+        }
+        .form-container {
+            width: 60%;
+            padding: 20px;
+            background-color: #ffffff;
+        }
+        h1 {
+            margin-top: -20px;
+            font-size: 40px;
+            font-weight: bold;
+            margin-bottom: 30px;
+            color: #000000;
+        }
+        label {
+            font-size: 16px;
+            margin-bottom: 10px;
+            color: #000000;
+            display: block;
+        }
+        input[type="text"], input[type="email"], input[type="date"], input[type="file"], input[type="password"], select, textarea {
+            width: 80%;
+            padding: 12px;
+            margin-bottom: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        .error-message {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            display: block;
+        }
+         .error-message-1 {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            display: none;
+        }
+         button {
+    background-color:#843aeb;
+    color: #ffffff;
+    border: none;
+    padding: 12px 24px;
+    font-size: 20px;
+    font-weight: 600;
+    border-radius: 20px;
+    cursor: pointer;
+    width: 150px;
+    height: 50px;
+    display: block;
+    margin-top:20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background-color: #4500b5;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px) scale(1.05);
+}
+
+button:active {
+    background-color: #3a009b;
+    transform: translateY(1px) scale(1);
+}
+         
+        .image-container {
+            width: 70%;
+            background-image: url("./project_images/Job offers-pana.png");
+            background-size: cover;
+            background-position: center;
+        }
+          footer {
+            background-color: #f5f5f5;
+            padding: 40px 0;
+            border-top: 1px solid #eaeaea;
+            font-family: 'Montserrat', sans-serif;
+            color: #333;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: auto;
+            text-align:left;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: start;
+            justify-content: start;
+            margin-bottom: 20px; 
+        }
+
+        .footer-logo img {
+            width: 100px;
+            margin-right: 30px;
+        }
+
+        .footer-logo span {
+            font-size: 35px;
+            font-weight: 700;
+            color: #000;
+            margin-top: 5px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: start;
+            flex-wrap: wrap; 
+            margin-bottom: 30px; 
+            border-bottom: 1px solid #eaeaea; 
+            padding-bottom: 20px; 
+        }
+
+        .footer-column {
+            flex: 1;
+            margin: 10px 20px;
+            min-width: 200px; 
+        }
+
+        .footer-column h4 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 15px; 
+        }
+
+        .footer-column ul li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .footer-column ul li a:hover {
+            color: #000;
+            transform: scale(1.2,1.2);
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content:start;
+            gap: 20px;
+        }
+
+        .social-icons a {
+            font-size: 25px;
+            color: #333;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: #000;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            font-size: 15px;
+            color: #000;
+            margin-top: 20px; 
+        }
+
+        .footer-bottom p {
+            margin-bottom: 5px;
+        }
+
+        .footer-bottom small {
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="#" class="brand">Smart Service</a>
+        <ul>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="signup.html">SignUp</a></li>
+            <li><a href="aboutus.html">About Us</a></li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <div class="form-container">
+            <h1>Register as a Professional</h1>
+            <form action="registerprof.jsp" method="post">
+                <label for="fullName">Full Name:</label>
+                <input type="text" id="fullName" name="fullName" required>
+
+                <label for="email">Email Address:</label>
+                <input type="email" id="email" name="email" required>
+                 
+                   <label for="password">Password:</label>
+                   <input type="password" id="password" name="password" oninput="validatePasswordInput()" onfocus="showPasswordError()" onblur="hidePasswordError()" required>
+                    <small id="passwordError" class="error-message-1">Password must be atleast 6 characters long, contain one uppercase letter,<br>one number, and one special character.</small>
+
+                <label for="mobile">Mobile Number:</label>
+                <input type="text" id="mobile" name="mobile" placeholder="+91 Phone Number" required oninput="validateMobileNumber()" required>
+                <span id="mobileError" class="error-message"></span>
+
+                <label for="dob">Date of Birth:</label>
+                <input type="date" id="dob" name="dob" required>
+
+                <label for="gender">Gender:</label>
+                <select id="gender" name="gender" required>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Non-binary">Non-binary</option>
+                    <option value="Prefer not to say">Prefer not to say</option>
+                </select>
+
+                <label for="languages">Languages Spoken:</label>
+                <input type="text" id="languages" name="languages" placeholder="e.g., English, Hindi" required>
+
+                <label for="expertise">Areas of Expertise:</label>
+                <textarea id="expertise" name="expertise" placeholder="Describe your areas of expertise" required></textarea>
+
+                <button id="submitBtn">Submit</button>
+            </form>
+        </div>
+        <div class="image-container"></div>
+    </div>
+     <footer>
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="./project_images/logo.png" alt="Smart Service Logo">
+                <span>Smart Service</span>
+            </div>
+            
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="terms.html">Terms & conditions</a></li>
+                        <li><a href="privacypolicy.html">Privacy policy</a></li>
+                        <li><a href="impact.html">Smart Service impact</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>For partners</h4>
+                    <ul>
+                        <li><a href="ptems.html">Terms and Conditions</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Contact us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>For customers</h4>
+                    <ul>
+                        <li><a href="seereviews.jsp">Customer reviews</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Social Links</h4>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="footer-bottom">
+            <p>&copy; Copyright 2024 Smart Service. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+<script>
+        function validateMobileNumber() {
+            const mobileInput = document.getElementById('mobile');
+            const errorMessage = document.getElementById('mobileError');
+            const submitBtn = document.getElementById('submitBtn'); 
+
+            if (mobileInput.value.length !== 10 || isNaN(mobileInput.value)) {
+                errorMessage.textContent = "Enter a valid 10-digit mobile number";
+                mobileInput.style.borderColor = "red";
+                submitBtn.disabled = true; 
+            } else {
+                errorMessage.textContent = "";
+                mobileInput.style.borderColor = "";
+                submitBtn.disabled = false; 
+            }
+        }
+
+        const passwordInput = document.getElementById("password");
+        const passwordError = document.getElementById("passwordError");
+        const submitButton = document.getElementById("submitBtn");
+
+        // Function to check password validity
+        function validatePassword(password) {
+            const minLength = 6;
+            const hasUpperCase = /[A-Z]/.test(password);
+            const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+            const hasNumber = /\d/.test(password);
+
+            return password.length >= minLength && hasUpperCase && hasSpecialChar && hasNumber;
+        }
+
+        passwordInput.addEventListener("focus", function () {
+            passwordError.style.display = "block";
+        });
+
+
+        passwordInput.addEventListener("input", function () {
+            const isValid = validatePassword(passwordInput.value);
+            if (isValid) {
+                passwordError.style.display = "none";
+                submitButton.disabled = false;
+            } else {
+                passwordError.style.display = "block";
+                submitButton.disabled = true;
+            }
+        });
+
+        passwordInput.addEventListener("blur", function () {
+            const isValid = validatePassword(passwordInput.value);
+            if (isValid) {
+                passwordError.style.display = "none";
+            }
+        });
+
+    </script>
+</html>

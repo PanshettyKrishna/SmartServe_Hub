@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="icon" href="./project_images/favicon2.ico" type="image/x-icon">
+    <link rel="icon" href="./project_images/favicon2.png" type="image/png">
+    <link rel="shortcut icon" href="./project_images/favicon2.ico" type="image/x-icon">
+    <title>Smart Service</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f5f5f5; /* light grey background */
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+        .container {
+            display: flex;
+            max-width: 1400px;
+            width: 100%;
+            background-color: #ffffff; /* white background */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* darker grey shadow */
+            overflow: hidden;
+        }
+        .image-section {
+            flex: 50%;
+            background-image: url('./project_images/email-already-exist.jpg');
+            background-size: cover;
+            background-position: center;
+            width: 1000px;
+            height: 400px;
+        }
+        .content-section {
+            flex: 50%;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+        }
+        h1 {
+            color: #333333; /* dark grey */
+            font-size: 40px;
+            margin-bottom: 5px;
+        }
+        p {
+            color: #f40000; /* medium grey */
+            font-size: 25px;
+            margin-bottom: 5px;
+        }
+        a {
+            background-color: #333333; /* dark grey button */
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            width: 120px;
+            margin: 0 auto;
+            margin-top: 40px;
+        }
+        a:hover {
+            background-color: #000000; /* black on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="image-section"></div>
+        <div class="content-section">
+            <h1>Sorry,</h1>
+            <p>Email already exists! Try to log in or create an account with a different email ID.</p>
+            <a href="registerprof.html">Try Again</a>
+        </div>
+    </div>
+</body>
+</html>
